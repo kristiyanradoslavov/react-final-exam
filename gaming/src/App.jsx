@@ -14,11 +14,8 @@ function App() {
         <>
             {/* Preloader */}
 
-            {/* ***** Header Area Start ***** */}
 
             <Header />
-
-            {/* ***** Header Area End ***** */}
 
             <Welcome />
 
