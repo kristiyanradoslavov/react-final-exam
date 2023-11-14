@@ -24,7 +24,7 @@ export default function Header() {
                                     <Link to="product-details">Product Details</Link>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact Us</a>
+                                    <Link to="contacts">Contact Us</Link>
                                 </li>
                                 <li>
                                     <a href="#">Sign In</a>
