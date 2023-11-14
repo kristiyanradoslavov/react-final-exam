@@ -15,15 +15,13 @@ export default function Header() {
                             {/* ***** Menu Start ***** */}
                             <ul className="nav">
                                 <li>
-                                    <a href="/" className="active">
-                                        Home
-                                    </a>
+                                    <Link to="/" className="active">Home</Link>
                                 </li>
                                 <li>
-                                    <a href="our-shop">Our Shop</a>
+                                    <Link to="our-shop">Our Shop</Link>
                                 </li>
                                 <li>
-                                    <a href="product-details.html">Product Details</a>
+                                    <Link to="product-details">Product Details</Link>
                                 </li>
                                 <li>
                                     <a href="contact.html">Contact Us</a>
