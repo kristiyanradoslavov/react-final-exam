@@ -7,7 +7,7 @@ export default function OurShop() {
                         <div className="col-lg-12">
                             <h3>Our Shop</h3>
                             <span className="breadcrumb">
-                                <a href="#">Home</a> &gt; Our Shop
+                                <a href="/">Home</a> &gt; Our Shop
                             </span>
                         </div>
                     </div>

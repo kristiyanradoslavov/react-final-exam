@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Header() {
     return (
         <header className="header-area header-sticky">
@@ -13,12 +15,12 @@ export default function Header() {
                             {/* ***** Menu Start ***** */}
                             <ul className="nav">
                                 <li>
-                                    <a href="index.html" className="active">
+                                    <a href="/" className="active">
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="shop.html">Our Shop</a>
+                                    <a href="our-shop">Our Shop</a>
                                 </li>
                                 <li>
                                     <a href="product-details.html">Product Details</a>

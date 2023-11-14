@@ -1,11 +1,10 @@
-import Features from "./components/features/Features"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
-import MostPlayed from "./components/most-played/MostPlayed"
-import Newsletter from "./components/newsletter/Newsletter"
-import TopCategories from "./components/top-categories/TopCategories"
-import Trending from "./components/trending/Trending"
-import Welcome from "./components/welcome/Welcome"
+import Home from "./components/home/Home"
+import OurShop from "./components/our-shop/OurShop"
+
+
+import { Routes, Route } from "react-router-dom"
 
 
 function App() {
@@ -14,20 +13,14 @@ function App() {
         <>
             {/* Preloader */}
 
-
             <Header />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="our-shop" element={<OurShop />} />
 
-            <Welcome />
+            </Routes>
 
-            <Features />
 
-            <Trending />
-
-            <MostPlayed />
-
-            <TopCategories />
-
-            <Newsletter />
 
             <Footer />
         </>
