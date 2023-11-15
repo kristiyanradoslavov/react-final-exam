@@ -1,3 +1,5 @@
+import Product from "../product/Product";
+
 export default function Catalogue() {
     return (
         <>
@@ -37,27 +39,9 @@ export default function Catalogue() {
                             </a>
                         </li>
                     </ul>
-                    <div className="row trending-box">
-                        <div className="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 str">
-                            <div className="item">
-                                <div className="thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/trending-02.jpg" alt="" />
-                                    </a>
-                                    <span className="price">
-                                        <em>$45</em>$30
-                                    </span>
-                                </div>
-                                <div className="down-content">
-                                    <span className="category">Action</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="product-details.html">
-                                        <i className="fa fa-shopping-bag" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <Product />
+
                     <div className="row">
                         <div className="col-lg-12">
                             <ul className="pagination">
