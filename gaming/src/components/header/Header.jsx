@@ -18,18 +18,27 @@ export default function Header() {
                                     <Link to="/" className="active">Home</Link>
                                 </li>
                                 <li>
-                                    <Link to="our-shop">Our Shop</Link>
+                                    <Link to="catalogue">Catalogue</Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link to="product-details">Product Details</Link>
-                                </li>
+                                </li> */}
                                 <li>
                                     <Link to="contacts">Contact Us</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Sign In</a>
+                                    <a href="#" className='sign'>Shopping Cart</a>
                                 </li>
-                            </ul>
+                                <li>
+                                    <a href="#" className='sign'>Sign In</a>
+                                </li>
+                                <li>
+                                    <a href="#" className='sign'>Register</a>
+                                </li>
+                                <li>
+                                    <a href="#" className='sign'>Logout</a>
+                                </li>
+                            </ul>   
                             <a className="menu-trigger">
                                 <span>Menu</span>
                             </a>

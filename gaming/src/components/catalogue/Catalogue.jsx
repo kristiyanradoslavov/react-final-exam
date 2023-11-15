@@ -1,4 +1,4 @@
-export default function OurShop() {
+export default function Catalogue() {
     return (
         <>
             <div className="page-heading header-text">
