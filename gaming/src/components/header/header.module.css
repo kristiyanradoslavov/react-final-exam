@@ -1,0 +1,14 @@
+.auth-btns {
+    background-color: #ee626b;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    transition: all 0.4s ease 0s;
+    padding: 0 20px;
+    font-weight: 300;
+    text-transform: capitalize;
+} 
+
+.auth-btns:hover {
+    background-color: #031736;
+}

@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom"
 
 import Footer from "./components/footer/Footer"
-import Header from "./components/header/Header"
+
+import Header from "./components/Header/Header"
 import Home from "./components/home/Home"
 import ProductDetails from "./components/product-details/ProductDetails"
 import Contacts from "./components/contacts/Contacts"
 import Catalogue from "./components/catalogue/Catalogue"
+import RegisterModal from "./components/register-modal/RegisterModal"
 
 
 function App() {

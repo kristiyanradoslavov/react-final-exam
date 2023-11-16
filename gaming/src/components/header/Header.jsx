@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import styles from './header.module.css'
 
 export default function Header() {
     return (
@@ -27,18 +28,18 @@ export default function Header() {
                                     <Link to="contacts">Contact Us</Link>
                                 </li>
                                 <li>
-                                    <a href="#" className='sign'>Shopping Cart</a>
+                                <button className={styles["auth-btns"]}>Shopping cart</button>
                                 </li>
                                 <li>
-                                    <a href="#" className='sign'>Sign In</a>
+                                <button className={styles["auth-btns"]}>Sign in</button>
                                 </li>
                                 <li>
-                                    <a href="#" className='sign'>Register</a>
+                                    <button className={styles["auth-btns"]}>Register</button>
                                 </li>
                                 <li>
-                                    <a href="#" className='sign'>Logout</a>
+                                    <button className={styles["auth-btns"]}>Login</button>
                                 </li>
-                            </ul>   
+                            </ul>
                             <a className="menu-trigger">
                                 <span>Menu</span>
                             </a>
