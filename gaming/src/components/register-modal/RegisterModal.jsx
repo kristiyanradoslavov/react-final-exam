@@ -1,8 +1,10 @@
+import styles from './registerModal.module.css'
+
 export default function RegisterModal() {
     return (
-        <div className="overlay">
-            <div className="backdrop"></div>
-            <div className="modal">
+        <div className={styles['overlay']}>
+            <div className={styles['backdrop']}></div>
+            <div className={styles['modal']}>
                 <div className="user-container">
                     <header className="headers">
                         <h2>Register</h2>
