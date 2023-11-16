@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
 import styles from './header.module.css'
 
-export default function Header() {
+export default function Header({createUserHandler}) {
+    const registerBtnHandler = () => {
+        createUserHandler()
+    }
+
     return (
         <header className="header-area header-sticky">
             <div className="container">
@@ -34,7 +38,7 @@ export default function Header() {
                                 <button className={styles["auth-btns"]}>Sign in</button>
                                 </li>
                                 <li>
-                                    <button className={styles["auth-btns"]}>Register</button>
+                                    <button className={styles["auth-btns"]} onClick={registerBtnHandler}>Register</button>
                                 </li>
                                 <li>
                                     <button className={styles["auth-btns"]}>Login</button>

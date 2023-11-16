@@ -8,15 +8,26 @@ import ProductDetails from "./components/product-details/ProductDetails"
 import Contacts from "./components/contacts/Contacts"
 import Catalogue from "./components/catalogue/Catalogue"
 import RegisterModal from "./components/register-modal/RegisterModal"
+import { useState } from "react"
 
 
 function App() {
+
+    const [createUserModal, setCreateUserModal] = useState(false)
+
+    const openRegisterModal = () => {
+        setCreateUserModal(true)
+    }
+
+    const closeRegisterModal = () => {
+        setCreateUserModal(false)
+    }
 
     return (
         <>
             {/* Preloader */}
 
-            <Header />
+            <Header createUserHandler={openRegisterModal} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="catalogue" element={<Catalogue />} />
@@ -25,7 +36,7 @@ function App() {
 
             </Routes>
 
-            <RegisterModal /> 
+            {createUserModal && <RegisterModal />}
 
 
 
