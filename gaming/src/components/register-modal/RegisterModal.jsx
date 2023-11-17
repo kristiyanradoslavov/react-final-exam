@@ -5,10 +5,10 @@ export default function RegisterModal() {
         <div className={styles['overlay']}>
             <div className={styles['backdrop']}></div>
             <div className={styles['modal']}>
-                <div className="user-container">
-                    <header className="headers">
+                <div className={styles['user-container']}>
+                    <header className={styles['headers']}>
                         <h2>Register</h2>
-                        <button className="btn close">
+                        <button className={`${styles['btn']} ${styles['close']}`}>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark"
                                 className="svg-inline--fa fa-xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path fill="currentColor"
@@ -19,45 +19,44 @@ export default function RegisterModal() {
                     </header>
 
                     <form>
-                        <div className="form-row">
-
-                            <div className="form-group">
+                        <div className={styles['form-row']}>
+                            <div className={styles['form-group']}>
                                 <label htmlFor="firstName">First name</label>
                                 <input id="firstName" name="firstName" type="text" />
                             </div>
 
-                            <div className="form-group">
+                            <div className={styles['form-group']}>
                                 <label htmlFor="lastName">Last name</label>
                                 <input id="lastName" name="lastName" type="text" />
 
                             </div>
                         </div>
 
-                        <div className="form-row">
-                            <div className="form-group">
+                        <div className={styles['form-row']}>
+                            <div className={styles['form-group']}>
                                 <label htmlFor="email">Email</label>
                                 <input id="email" name="email" type="text" />
 
                             </div>
 
-                            <div className="form-group">
+                            <div className={styles['form-group']}>
                                 <label htmlFor="phoneNumber">Phone number</label>
                                 <input id="phoneNumber" name="phoneNumber" type="text" />
 
                             </div>
                         </div>
 
-                        <div className="form-group long-line">
+                        <div className={`${styles['form-group']} ${styles['long-line']}}`}>
                             <label htmlFor="Password">Password</label>
                             <input id="Password" name="Password" type="text" />
                         </div>
 
-                        <div className="form-group long-line">
-                            <label htmlFor="Repeat Password">Repeat Repeat Password</label>
+                        <div className={`${styles['form-group']} ${styles['long-line']}}`}>
+                            <label htmlFor="Repeat Password">Repeat Password</label>
                             <input id="Repeat Password" name="Repeat Password" type="text" />
                         </div>
 
-                        <div id="form-actions">
+                        <div id={styles['form-actions']}>
                             <button id="action-save" className="btn" type="submit">Register</button>
                             <button id="action-cancel" className="btn" type="button">
                                 Cancel

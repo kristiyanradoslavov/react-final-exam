@@ -12,3 +12,8 @@
 .auth-btns:hover {
     background-color: #031736;
 }
+
+
+.headers {
+    display: flex;
+}
