@@ -1,14 +1,21 @@
 import styles from './registerModal.module.css'
 
-export default function RegisterModal() {
+export default function RegisterModal({
+    closeRegisterModal
+}) {
+
+    const closeButtonHandler = () => {
+        closeRegisterModal()
+    }
+
     return (
         <div className={styles['overlay']}>
-            <div className={styles['backdrop']}></div>
+            <div className={styles['backdrop']} onClick={closeButtonHandler}></div>
             <div className={styles['modal']}>
                 <div className={styles['user-container']}>
-                    <header className={styles['headers']}>
+                    <div className={styles['form-header']}>
                         <h2>Register</h2>
-                        <button className={`${styles['btn']} ${styles['close']}`}>
+                        <button className={`${styles['btn']} ${styles['close']}`} onClick={closeButtonHandler}>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark"
                                 className="svg-inline--fa fa-xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path fill="currentColor"
@@ -16,7 +23,7 @@ export default function RegisterModal() {
                                 </path>
                             </svg>
                         </button>
-                    </header>
+                    </div>
 
                     <form>
                         <div className={styles['form-row']}>
@@ -48,17 +55,17 @@ export default function RegisterModal() {
 
                         <div className={`${styles['form-group']} ${styles['long-line']}}`}>
                             <label htmlFor="Password">Password</label>
-                            <input id="Password" name="Password" type="text" />
+                            <input id="Password" name="Password" type="password" />
                         </div>
 
                         <div className={`${styles['form-group']} ${styles['long-line']}}`}>
                             <label htmlFor="Repeat Password">Repeat Password</label>
-                            <input id="Repeat Password" name="Repeat Password" type="text" />
+                            <input id="Repeat Password" name="Repeat Password" type="password" />
                         </div>
 
                         <div id={styles['form-actions']}>
                             <button id="action-save" className="btn" type="submit">Register</button>
-                            <button id="action-cancel" className="btn" type="button">
+                            <button id="action-cancel" className="btn" type="button" onClick={closeButtonHandler}>
                                 Cancel
                             </button>
                         </div>

@@ -36,7 +36,7 @@ function App() {
 
             </Routes>
 
-            {createUserModal && <RegisterModal />}
+            {createUserModal && <RegisterModal closeRegisterModal={closeRegisterModal} />}
 
 
 

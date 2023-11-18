@@ -1,10 +1,10 @@
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: fixed;
+    top: 0px;
+    left: 50%;
     z-index: 100;
+
+    display: flex;
   }
 
   .backdrop {
@@ -39,13 +39,14 @@
     }
   }
 
-  .headers {
+  .form-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
     border-bottom: 1px solid black;
     margin-bottom: 10px;
+    z-index: 200;
 }
 
 .btn {

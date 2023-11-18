@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import styles from './header.module.css'
 
-export default function Header({createUserHandler}) {
+export default function Header({
+    createUserHandler
+}) {
     const registerBtnHandler = () => {
         createUserHandler()
     }
@@ -32,10 +34,10 @@ export default function Header({createUserHandler}) {
                                     <Link to="contacts">Contact Us</Link>
                                 </li>
                                 <li>
-                                <button className={styles["auth-btns"]}>Shopping cart</button>
+                                    <button className={styles["auth-btns"]}>Shopping cart</button>
                                 </li>
                                 <li>
-                                <button className={styles["auth-btns"]}>Sign in</button>
+                                    <button className={styles["auth-btns"]}>Sign in</button>
                                 </li>
                                 <li>
                                     <button className={styles["auth-btns"]} onClick={registerBtnHandler}>Register</button>
