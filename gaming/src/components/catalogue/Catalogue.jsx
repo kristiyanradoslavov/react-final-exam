@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
 import Product from "../product/Product";
+import * as gamesServices from "../../services/services";
 
 export default function Catalogue() {
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        gamesServices.getAllGames()
+            .then(data => setGames(data))
+
+    }, [])
+
     return (
         <>
             <div className="page-heading header-text">
@@ -40,7 +50,9 @@ export default function Catalogue() {
                         </li>
                     </ul>
 
-                    <Product />
+                    {games.map((game =>
+                        <Product key={game._id} gameData={game} />
+                    ))}
 
                     <div className="row">
                         <div className="col-lg-12">
