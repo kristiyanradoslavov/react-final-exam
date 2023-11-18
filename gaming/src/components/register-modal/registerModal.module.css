@@ -1,52 +1,52 @@
 .overlay {
-    position: fixed;
-    top: 0px;
-    left: 50%;
-    z-index: 100;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  z-index: 100;
 
-    display: flex;
-  }
+  display: flex;
+}
 
-  .backdrop {
-    background-color: rgba(0, 0, 0, 0.75);
-    height: 100vh;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 20;
-  }
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
 
 
+.modal {
+  width: 45rem;
+  position: absolute;
+  max-height: 90vh;
+  margin: auto;
+  border-radius: 20px;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+  z-index: 30;
+  margin-top: 50px;
+}
+
+@media (min-width: 930px) {
   .modal {
     width: 45rem;
-    position: absolute;
-    max-height: 90vh;
-    margin: auto;
-    border-radius: 20px;
-    background-color: white;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
-    z-index: 30;
-    margin-top: 50px;
+    left: calc(50% - 20rem);
+    border-radius: 14px;
   }
+}
 
-  @media (min-width: 930px) {
-    .modal {
-      width: 45rem;
-      left: calc(50% - 20rem);
-      border-radius: 14px;
-    }
-  }
-
-  .form-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    border-bottom: 1px solid black;
-    margin-bottom: 10px;
-    z-index: 200;
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  z-index: 200;
 }
 
 .btn {
@@ -65,6 +65,7 @@
 
 .btn:hover {
   opacity: 1;
+  transition: all 0.4s ease 0s;
 }
 
 .btn:hover {
@@ -111,5 +112,36 @@ form {
   gap: 10px;
 }
 
+#form-actions > button {
+  background-color: #ee626b;
+  border-radius: 20px;
+  color: #fff;
+  width: 100px;
+}
 
+#form-actions > button:hover {
+  box-shadow: 0 0 20px black;
+  transition: all 0.4s ease 0s;
+}
 
+#form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.change-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.reroute-btn {
+  background-color: transparent;
+  border: none;
+  color: #0d6efd;
+}

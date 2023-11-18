@@ -71,6 +71,11 @@ export default function RegisterModal({
                         </div>
                     </form>
                 </div>
+
+                <div className={styles['change-modal']}>
+                    Already have an account ?
+                    <button className={styles['reroute-btn']}>Login</button>
+                </div>
             </div>
         </div>
     );
