@@ -1,20 +1,20 @@
-import styles from './registerModal.module.css'
+import styles from './LoginModal.module.css'
 
-export default function RegisterModal({
-    closeRegisterModal
+export default function LoginModal({
+    closeLoginModal,
 }) {
 
     const closeButtonHandler = () => {
-        closeRegisterModal()
+        closeLoginModal()
     }
 
     return (
-        <div className={styles['overlay']}>
+        <div className={styles['overlay']} >
             <div className={styles['backdrop']} onClick={closeButtonHandler}></div>
             <div className={styles['modal']}>
                 <div className={styles['user-container']}>
                     <div className={styles['form-header']}>
-                        <h2>Register</h2>
+                        <h2>Login</h2>
                         <button className={`${styles['btn']} ${styles['close']}`} onClick={closeButtonHandler}>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark"
                                 className="svg-inline--fa fa-xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -26,41 +26,14 @@ export default function RegisterModal({
                     </div>
 
                     <form>
-                        <div className={styles['form-row']}>
-                            <div className={styles['form-group']}>
-                                <label htmlFor="firstName">First name</label>
-                                <input id="firstName" name="firstName" type="text" />
-                            </div>
-
-                            <div className={styles['form-group']}>
-                                <label htmlFor="lastName">Last name</label>
-                                <input id="lastName" name="lastName" type="text" />
-
-                            </div>
+                        <div className={styles['form-group']}>
+                            <label htmlFor="email">Email</label>
+                            <input id="loginEmail" name="email" type="text" />
                         </div>
 
-                        <div className={styles['form-row']}>
-                            <div className={styles['form-group']}>
-                                <label htmlFor="email">Email</label>
-                                <input id="email" name="email" type="text" />
-
-                            </div>
-
-                            <div className={styles['form-group']}>
-                                <label htmlFor="phoneNumber">Phone number</label>
-                                <input id="phoneNumber" name="phoneNumber" type="text" />
-
-                            </div>
-                        </div>
-
-                        <div className={`${styles['form-group']} ${styles['long-line']}}`}>
+                        <div className={styles['form-group']}>
                             <label htmlFor="Password">Password</label>
                             <input id="Password" name="Password" type="password" />
-                        </div>
-
-                        <div className={`${styles['form-group']} ${styles['long-line']}}`}>
-                            <label htmlFor="Repeat Password">Repeat Password</label>
-                            <input id="Repeat Password" name="Repeat Password" type="password" />
                         </div>
 
                         <div id={styles['form-actions']}>
@@ -74,8 +47,8 @@ export default function RegisterModal({
 
                 {/* TODO: add functionality to the button here */}
                 <div className={styles['change-modal']}>
-                    Already have an account ?
-                    <button className={styles['reroute-btn']}>Login</button>
+                    Dont have an account yet ?
+                    <button className={styles['reroute-btn']}>Register</button>
                 </div>
             </div>
         </div>

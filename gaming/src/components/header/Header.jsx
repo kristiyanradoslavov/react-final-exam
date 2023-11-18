@@ -2,10 +2,15 @@ import { Link } from 'react-router-dom'
 import styles from './header.module.css'
 
 export default function Header({
-    createUserHandler
+    createUserHandler,
+    openLoginModal
 }) {
     const registerBtnHandler = () => {
-        createUserHandler()
+        createUserHandler();
+    }
+
+    const loginBtnHandler = () => {
+        openLoginModal();
     }
 
     return (
@@ -36,14 +41,16 @@ export default function Header({
                                 <li>
                                     <button className={styles["auth-btns"]}>Shopping cart</button>
                                 </li>
-                                <li>
-                                    <button className={styles["auth-btns"]}>Sign in</button>
-                                </li>
+
                                 <li>
                                     <button className={styles["auth-btns"]} onClick={registerBtnHandler}>Register</button>
                                 </li>
                                 <li>
-                                    <button className={styles["auth-btns"]}>Login</button>
+                                    <button className={styles["auth-btns"]} onClick={loginBtnHandler}>Login</button>
+                                </li>
+
+                                <li>
+                                    <button className={styles["auth-btns"]}>Logout</button>
                                 </li>
                             </ul>
                             <a className="menu-trigger">

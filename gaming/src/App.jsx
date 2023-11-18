@@ -9,25 +9,35 @@ import Contacts from "./components/contacts/Contacts"
 import Catalogue from "./components/catalogue/Catalogue"
 import RegisterModal from "./components/register-modal/RegisterModal"
 import { useState } from "react"
+import LoginModal from "./components/login-modal/LoginModal"
 
 
 function App() {
 
-    const [createUserModal, setCreateUserModal] = useState(false)
+    const [createUserModal, setCreateUserModal] = useState(false);
+    const [loginModal, setLoginModal] = useState(false);
 
     const openRegisterModal = () => {
-        setCreateUserModal(true)
+        setCreateUserModal(true);
     }
 
     const closeRegisterModal = () => {
-        setCreateUserModal(false)
+        setCreateUserModal(false);
+    }
+
+    const openLoginModal = () => {
+        setLoginModal(true);
+    }
+
+    const closeLoginModal = () => {
+        setLoginModal(false)
     }
 
     return (
         <>
             {/* Preloader */}
 
-            <Header createUserHandler={openRegisterModal} />
+            <Header createUserHandler={openRegisterModal} openLoginModal={openLoginModal} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="catalogue" element={<Catalogue />} />
@@ -37,7 +47,7 @@ function App() {
             </Routes>
 
             {createUserModal && <RegisterModal closeRegisterModal={closeRegisterModal} />}
-
+            {loginModal && <LoginModal closeLoginModal={closeLoginModal} />}
 
 
             <Footer />
