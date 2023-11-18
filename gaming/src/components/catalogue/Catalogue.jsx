@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Product from "../product/Product";
 import * as gamesServices from "../../services/services";
+import styles from './catalogue.module.css'
 
 export default function Catalogue() {
     const [games, setGames] = useState([]);
@@ -50,9 +51,11 @@ export default function Catalogue() {
                         </li>
                     </ul>
 
-                    {games.map((game =>
-                        <Product key={game._id} gameData={game} />
-                    ))}
+                    <div className={styles['games-wrappe']}>
+                        {games.map((game =>
+                            <Product key={game._id} gameData={game} />
+                        ))}
+                    </div>
 
                     <div className="row">
                         <div className="col-lg-12">
