@@ -8,3 +8,18 @@ export const getAllGames = async () => {
 
     return Object.values(data);
 }
+
+
+export const createNewGame = async (formData) => {
+    const httpHeaders = {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }
+    const response = await fetch(baseUrl, httpHeaders);
+    const result = await response.json();
+
+    return result;
+}
