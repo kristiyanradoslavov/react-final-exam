@@ -6,11 +6,11 @@ export default function Product({
 }) {
     return (
         <div className={styles['single-product']}>
-            <div className="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 str">
+            <div>
                 <div className="item">
                     <div className="thumb">
                         <a href="product-details.html">
-                            <img src={gameData.imageUrl} alt="" className={styles['product-img']}/>
+                            <img src={gameData.imageUrl} alt="" className={styles['product-img']} />
                         </a>
                         <span className="price">
                             <em>$45</em>{gameData.price}
