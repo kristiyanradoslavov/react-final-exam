@@ -1,0 +1,80 @@
+  
+  .game-form {
+    width: 45rem;
+    max-height: 90vh;
+    margin: auto;
+    border-radius: 20px;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+    margin-top: 50px;
+  }
+  
+  .btn {
+    width: 140px;
+  }
+  
+  
+  .btn:hover {
+    opacity: 1;
+    transition: all 0.4s ease 0s;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+    box-shadow: 1px 2px 8px black;
+  }
+  
+  
+  .form-group {
+    margin-right: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .form-group textarea {
+    min-height: 140px;
+  }
+  
+  .long-line {
+    width: 98%;
+    margin-top: 15px;
+  }
+  
+  input {
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid lightgrey;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  #form-actions > button {
+    background-color: #ee626b;
+    border-radius: 20px;
+    color: #fff;
+    width: 140px;
+  }
+  
+  #form-actions > button:hover {
+    box-shadow: 0 0 20px black;
+    transition: all 0.4s ease 0s;
+  }
+  
+  #form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 16px;
+    gap: 20px;
+  }
+  
