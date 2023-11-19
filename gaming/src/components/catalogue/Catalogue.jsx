@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Product from "../product/Product";
 import * as gamesServices from "../../services/gamesServices";
 import styles from './catalogue.module.css'
-import NewGame from "../new-game-btn/NewGameBtn";
+import NewGameBtn from "../new-game-btn/NewGameBtn";
 
 export default function Catalogue() {
     const [games, setGames] = useState([]);
@@ -54,7 +54,7 @@ export default function Catalogue() {
 
                     <div className={styles['games-wrapper']}>
 
-                        <NewGame />
+                        <NewGameBtn />
 
                         {games.map((game =>
                             <Product key={game._id} gameData={game} />

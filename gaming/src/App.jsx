@@ -1,15 +1,16 @@
 import { Routes, Route } from "react-router-dom"
 
-import Footer from "./components/footer/Footer"
+import { useState } from "react"
 
 import Header from "./components/Header/Header"
 import Home from "./components/home/Home"
+import Footer from "./components/footer/Footer"
 import ProductDetails from "./components/product-details/ProductDetails"
 import Contacts from "./components/contacts/Contacts"
 import Catalogue from "./components/catalogue/Catalogue"
 import RegisterModal from "./components/register-modal/RegisterModal"
-import { useState } from "react"
 import LoginModal from "./components/login-modal/LoginModal"
+import NewGameForm from "./components/new-game-form/NewGameForm"
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                 <Route path="catalogue" element={<Catalogue />} />
                 <Route path="product-details" element={<ProductDetails />} />
                 <Route path="contacts" element={<Contacts />} />
+                <Route path="add-new-game" element={<NewGameForm />} />
 
             </Routes>
 
