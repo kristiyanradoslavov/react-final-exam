@@ -1,35 +1,31 @@
 import { useState } from 'react';
 import styles from './newGameForm.module.css'
 
-import * as gameServices from '../../services/gamesServices'
+import useForm from '../../hooks/useForm';
 
+
+const NewGameKeys = {
+    Title: 'title',
+    Category: 'category',
+    ImageUrl: 'imageUrl',
+    Price: 'price',
+    Description: 'description',
+}
 
 export default function NewGameForm() {
-    const initialFormValues = {
-        title: '',
-        category: '',
-        imageUrl: '',
-        price: '',
-        description: '',
-    }
-    const [formValues, setFormValues] = useState(initialFormValues);
 
-    const formValueChangeHandler = (e) => {
-        setFormValues(oldValue => ({
-            ...oldValue,
-            [e.target.name]: e.target.value
-        }))
+    const formSubmitHandler = (submitValues) => {
+        console.log(submitValues)
     }
 
-    const formSubmitHandler = (e) => {
-        e.preventDefault();
-        gameServices.createNewGame(formValues)
-            .then(result => {
-                console.log(result)
-            })
+    const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
+        [NewGameKeys.Title]: '',
+        [NewGameKeys.Category]: '',
+        [NewGameKeys.ImageUrl]: '',
+        [NewGameKeys.Price]: '',
+        [NewGameKeys.Description]: '',
 
-
-    }
+    });
 
     return (
 
@@ -47,33 +43,63 @@ export default function NewGameForm() {
                 </div>
             </div>
 
-            <form className={styles['game-form']} onSubmit={formSubmitHandler}>
+            <form className={styles['game-form']} onSubmit={onSubmit}>
                 <div className={styles['form-group']}>
                     <label htmlFor="title">Game title</label>
-                    <input id="title" name="title" type="text" value={formValues.title} onChange={formValueChangeHandler} />
+                    <input
+                        id="title"
+                        name="title"
+                        type="text"
+                        values={values[NewGameKeys.Title]}
+                        onChange={onChange}
+                    />
 
                     <div className={styles['form-group']}>
                         <label htmlFor="category">Category</label>
-                        <input id="category" name="category" type="text" value={formValues.category} onChange={formValueChangeHandler} />
+                        <input
+                            id="category"
+                            name="category"
+                            type="text"
+                            values={values[NewGameKeys.Category]}
+                            onChange={onChange}
+                        />
 
                     </div>
                 </div>
 
                 <div className={styles['form-group']}>
                     <label htmlFor="imageUrl">Image Url</label>
-                    <input id="imageUrl" name="imageUrl" type="text" value={formValues.imageUrl} onChange={formValueChangeHandler} />
+                    <input
+                        id="imageUrl"
+                        name="imageUrl"
+                        type="text"
+                        values={values[NewGameKeys.ImageUrl]}
+                        onChange={onChange}
+                    />
 
 
                     <div className={styles['form-group']}>
                         <label htmlFor="price">Price</label>
-                        <input id="price" name="price" type="text" value={formValues.price} onChange={formValueChangeHandler} />
+                        <input
+                            id="price"
+                            name="price"
+                            type="text"
+                            values={values[NewGameKeys.Price]}
+                            onChange={onChange}
+                        />
 
                     </div>
                 </div>
 
                 <div className={styles['form-group']}>
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" name="description" type="text" value={formValues.description} onChange={formValueChangeHandler} />
+                    <textarea
+                        id="description"
+                        name="description"
+                        type="text"
+                        values={values[NewGameKeys.Description]}
+                        onChange={onChange}
+                    />
                 </div>
 
                 <div id={styles['form-actions']}>
