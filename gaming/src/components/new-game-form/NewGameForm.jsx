@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import styles from './newGameForm.module.css'
 
 import useForm from '../../hooks/useForm';
+import { createNewGame } from '../../services/gamesServices';
 
 
 const NewGameKeys = {
@@ -14,8 +16,18 @@ const NewGameKeys = {
 
 export default function NewGameForm() {
 
+    const navigate = useNavigate();
+
     const formSubmitHandler = (submitValues) => {
-        console.log(submitValues)
+
+        try {
+            createNewGame(submitValues);
+            navigate('/catalogue')
+
+        } catch {
+            // TODO: BETTER ERROR HANDLING
+            console.log('error when creating game')
+        }
     }
 
     const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
