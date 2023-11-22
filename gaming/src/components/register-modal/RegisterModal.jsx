@@ -1,4 +1,15 @@
+import useForm from '../../hooks/useForm';
 import styles from './registerModal.module.css'
+
+const FormKeys = {
+    FirstName: 'first-name',
+    LastName: 'last-name',
+    Email: 'email',
+    PhoneNumber: 'phone-number',
+    Password: 'password',
+    RepeatPassword: 'repeat-password'
+
+}
 
 export default function RegisterModal({
     closeRegisterModal
@@ -7,6 +18,19 @@ export default function RegisterModal({
     const closeButtonHandler = () => {
         closeRegisterModal()
     }
+
+    const formSubmitHandler = () => {
+        console.log(values);
+    }
+
+    const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
+        [FormKeys.FirstName]: '',
+        [FormKeys.LastName]: '',
+        [FormKeys.Email]: '',
+        [FormKeys.PhoneNumber]: '',
+        [FormKeys.Password]: '',
+        [FormKeys.RepeatPassword]: '',
+    });
 
     return (
         <div className={styles['overlay']}>
@@ -25,16 +49,28 @@ export default function RegisterModal({
                         </button>
                     </div>
 
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <div className={styles['form-row']}>
                             <div className={styles['form-group']}>
-                                <label htmlFor="firstName">First name</label>
-                                <input id="firstName" name="firstName" type="text" />
+                                <label htmlFor="first-name">First name</label>
+                                <input
+                                    id="first-name"
+                                    name="first-name"
+                                    type="text"
+                                    values={values[FormKeys.FirstName]}
+                                    onChange={onChange}
+                                />
                             </div>
 
                             <div className={styles['form-group']}>
-                                <label htmlFor="lastName">Last name</label>
-                                <input id="lastName" name="lastName" type="text" />
+                                <label htmlFor="last-name">Last name</label>
+                                <input
+                                    id="last-name"
+                                    name="last-name"
+                                    type="text"
+                                    values={values[FormKeys.LastName]}
+                                    onChange={onChange}
+                                />
 
                             </div>
                         </div>
@@ -42,25 +78,49 @@ export default function RegisterModal({
                         <div className={styles['form-row']}>
                             <div className={styles['form-group']}>
                                 <label htmlFor="email">Email</label>
-                                <input id="email" name="email" type="text" />
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="text"
+                                    values={values[FormKeys.Email]}
+                                    onChange={onChange}
+                                />
 
                             </div>
 
                             <div className={styles['form-group']}>
-                                <label htmlFor="phoneNumber">Phone number</label>
-                                <input id="phoneNumber" name="phoneNumber" type="text" />
+                                <label htmlFor="phone-number">Phone number</label>
+                                <input
+                                    id="phone-number"
+                                    name="phone-number"
+                                    type="text"
+                                    values={values[FormKeys.PhoneNumber]}
+                                    onChange={onChange}
+                                />
 
                             </div>
                         </div>
 
                         <div className={`${styles['form-group']} ${styles['long-line']}}`}>
-                            <label htmlFor="Password">Password</label>
-                            <input id="Password" name="Password" type="password" />
+                            <label htmlFor="password">Password</label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                values={values[FormKeys.Password]}
+                                onChange={onChange}
+                            />
                         </div>
 
                         <div className={`${styles['form-group']} ${styles['long-line']}}`}>
-                            <label htmlFor="Repeat Password">Repeat Password</label>
-                            <input id="Repeat Password" name="Repeat Password" type="password" />
+                            <label htmlFor="repeat-password">Repeat Password</label>
+                            <input
+                                id="repeat-password"
+                                name="repeat-password"
+                                type="password"
+                                values={values[FormKeys.RepeatPassword]}
+                                onChange={onChange}
+                            />
                         </div>
 
                         <div id={styles['form-actions']}>

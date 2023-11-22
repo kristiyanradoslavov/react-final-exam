@@ -11,6 +11,10 @@ export default function ProductDetails() {
     useEffect(() => {
         getSingleGame(gameId)
             .then((result) => setGame(result))
+            // TODO: BETTER ERROR HANDLING
+            .catch((error) => {
+                console.log(error)
+            })
 
     }, [gameId])
 
