@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
+import { register } from '../../services/authServices';
 import styles from './registerModal.module.css'
 
 const FormKeys = {
@@ -15,12 +17,24 @@ export default function RegisterModal({
     closeRegisterModal
 }) {
 
+
+    const navigate = useNavigate();
+
     const closeButtonHandler = () => {
         closeRegisterModal()
     }
 
     const formSubmitHandler = () => {
-        console.log(values);
+        try {
+            register(values)
+                .then((result) => {
+                    closeRegisterModal();
+                    navigate('/');
+                })
+
+        } catch {
+            console.log(error)
+        }
     }
 
     const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
@@ -31,6 +45,8 @@ export default function RegisterModal({
         [FormKeys.Password]: '',
         [FormKeys.RepeatPassword]: '',
     });
+
+
 
     return (
         <div className={styles['overlay']}>
