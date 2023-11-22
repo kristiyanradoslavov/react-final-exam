@@ -37,6 +37,7 @@ export default function RegisterModal({
         }
     }
 
+
     const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
         [FormKeys.FirstName]: '',
         [FormKeys.LastName]: '',
