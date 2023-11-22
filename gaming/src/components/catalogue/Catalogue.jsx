@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import Product from "../product/Product";
+import { useParams } from "react-router-dom";
+
 import * as gamesServices from "../../services/gamesServices";
+
+import Product from "../product/Product";
 import styles from './catalogue.module.css'
 import NewGameBtn from "../new-game-btn/NewGameBtn";
 
@@ -12,6 +15,8 @@ export default function Catalogue() {
             .then(data => setGames(data))
 
     }, [])
+
+    const { gameId } = useParams();
 
     return (
         <>
@@ -57,7 +62,7 @@ export default function Catalogue() {
                         <NewGameBtn />
 
                         {games.map((game =>
-                            <Product key={game._id} gameData={game} />
+                            <Product key={game._id} gameData={game} gameId={game._id} />
                         ))}
                     </div>
 

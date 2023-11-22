@@ -23,3 +23,12 @@ export const createNewGame = async (formData) => {
 
     return result;
 }
+
+export const getSingleGame = async (gameId) => {
+
+    const response = await fetch(`${baseUrl}/${gameId}`);
+    const result = await response.json();
+
+    console.log(result)
+    return result;
+}

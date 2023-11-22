@@ -42,7 +42,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="catalogue" element={<Catalogue />} />
-                <Route path="product-details" element={<ProductDetails />} />
+                <Route path="/product-details/:gameId" element={<ProductDetails />} />
                 <Route path="contacts" element={<Contacts />} />
                 <Route path="add-new-game" element={<NewGameForm />} />
 

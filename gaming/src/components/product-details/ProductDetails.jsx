@@ -1,11 +1,26 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getSingleGame } from "../../services/gamesServices";
+
 export default function ProductDetails() {
+
+    const [game, setGame] = useState({});
+
+    const { gameId } = useParams();
+
+    useEffect(() => {
+        getSingleGame(gameId)
+            .then((result) => setGame(result))
+
+    }, [gameId])
+
     return (
         <>
             <div className="page-heading header-text">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h3>Modern Warfare® II</h3>
+                            <h3>{game.title}</h3>
                             <span className="breadcrumb">
                                 <a href="#">Home</a> &gt; <a href="#">Shop</a> &gt; Assasin Creed
                             </span>
@@ -18,19 +33,16 @@ export default function ProductDetails() {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="left-image">
-                                <img src="assets/images/single-game.jpg" alt="" />
+                                <img src={`${game.imageUrl}`} alt={`${game.title}`} />
                             </div>
                         </div>
                         <div className="col-lg-6 align-self-center">
-                            <h4>Call of Duty®: Modern Warfare® II</h4>
+                            <h4>{game.title}</h4>
                             <span className="price">
-                                <em>$28</em> $22
+                                <em>$28</em> ${game.price}
                             </span>
                             <p>
-                                LUGX Gaming Template is based on the latest Bootstrap 5 CSS
-                                framework. This template is provided by TemplateMo and it is
-                                suitable for your gaming shop ecommerce websites. Feel free to use
-                                this for any purpose. Thank you.
+                                {game.description}
                             </p>
                             <form id="qty" action="#">
                                 <input
@@ -49,8 +61,7 @@ export default function ProductDetails() {
                                     <span>Game ID:</span> COD MMII
                                 </li>
                                 <li>
-                                    <span>Genre:</span> <a href="#">Action</a>, <a href="#">Team</a>,{" "}
-                                    <a href="#">Single</a>
+                                    <span>Genre:</span> <a href="#">{game.category}</a>
                                 </li>
                                 <li>
                                     <span>Multi-tags:</span> <a href="#">War</a>,{" "}
