@@ -1,4 +1,6 @@
-const BaseUrl = 'http://localhost:3030/users/register'
+const BaseUrl = 'http://localhost:3030/users'
+
+const token = localStorage.getItem('accessToken');
 
 export const register = async (values) => {
     const data = {
@@ -17,9 +19,42 @@ export const register = async (values) => {
         }
     }
 
-    const response = await fetch(BaseUrl, httpHeaders);
+    if (token) {
+        httpHeaders.headers = {
+            ...httpHeaders.headers,
+            'X-Authorization': token
+        };
+    }
+
+
+    const response = await fetch(`${BaseUrl}/register`, httpHeaders);
     const result = await response.json();
 
     return result;
 
+}
+
+export const login = async (values) => {
+
+    const httpHeaders = {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }
+
+    if (token) {
+        httpHeaders.headers = {
+            ...httpHeaders.headers,
+            'X-Authorization': token
+        };
+    }
+
+    const response = await fetch(`${BaseUrl}/login`, httpHeaders);
+    const result = await response.json();
+
+    console.log(result);
+
+    return result
 }

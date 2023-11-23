@@ -1,4 +1,13 @@
+import { useContext } from 'react'
+import useForm from '../../hooks/useForm'
 import styles from './LoginModal.module.css'
+import { AuthContext } from '../../contexts/authContext'
+
+const LoginKeys = {
+    Email: 'email',
+    Password: 'password',
+}
+
 
 export default function LoginModal({
     closeLoginModal,
@@ -7,6 +16,13 @@ export default function LoginModal({
     const closeButtonHandler = () => {
         closeLoginModal()
     }
+
+    const { loginSubmitHandler } = useContext(AuthContext)
+
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        [LoginKeys.Email]: '',
+        [LoginKeys.Password]: '',
+    })
 
     return (
         <div className={styles['overlay']} >
@@ -25,19 +41,31 @@ export default function LoginModal({
                         </button>
                     </div>
 
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <div className={styles['form-group']}>
                             <label htmlFor="email">Email</label>
-                            <input id="loginEmail" name="email" type="text" />
+                            <input
+                                id="loginEmail"
+                                name="email"
+                                type="text"
+                                values={values[LoginKeys.Email]}
+                                onChange={onChange}
+                            />
                         </div>
 
                         <div className={styles['form-group']}>
-                            <label htmlFor="Password">Password</label>
-                            <input id="Password" name="Password" type="password" />
+                            <label htmlFor="password">Password</label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                values={values[LoginKeys.Password]}
+                                onChange={onChange}
+                            />
                         </div>
 
                         <div id={styles['form-actions']}>
-                            <button id="action-save" className="btn" type="submit">Register</button>
+                            <button id="action-save" className="btn" type="submit">Login</button>
                             <button id="action-cancel" className="btn" type="button" onClick={closeButtonHandler}>
                                 Cancel
                             </button>

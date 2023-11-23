@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom"
 
 import { useState } from "react"
 import { AuthContext } from "./contexts/authContext";
-import { register } from "./services/authServices";
+import { login, register } from "./services/authServices";
 
 import Header from "./components/Header/Header"
 import Home from "./components/home/Home"
@@ -28,14 +28,33 @@ function App() {
             if (result.code === 409) {
                 throw new Error('This user already exists')
             }
+
+            
+            localStorage.setItem('accessToken', result.accessToken)
+
             closeRegisterModal();
             navigate('/');
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
+    const loginSubmitHandler = async (values) => {
+        try {
+            const result = await login(values);
+
+            localStorage.setItem('accessToken', result.accessToken);
+
+            closeLoginModal();
+            navigate('catalogue');
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // start of modal open close; TODO: move them in a better place
     const openRegisterModal = () => {
         setCreateUserModal(true);
     }
@@ -54,6 +73,7 @@ function App() {
 
     const context = {
         registerSubmitHandler,
+        loginSubmitHandler,
     }
 
     return (
