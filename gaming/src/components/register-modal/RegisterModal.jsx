@@ -1,6 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import useForm from '../../hooks/useForm';
-import { register } from '../../services/authServices';
+import { AuthContext } from '../../contexts/authContext';
+
 import styles from './registerModal.module.css'
 
 const FormKeys = {
@@ -18,27 +19,14 @@ export default function RegisterModal({
 }) {
 
 
-    const navigate = useNavigate();
-
     const closeButtonHandler = () => {
         closeRegisterModal()
     }
 
-    const formSubmitHandler = () => {
-        try {
-            register(values)
-                .then((result) => {
-                    closeRegisterModal();
-                    navigate('/');
-                })
-
-        } catch {
-            console.log(error)
-        }
-    }
+    const { registerSubmitHandler } = useContext(AuthContext);
 
 
-    const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [FormKeys.FirstName]: '',
         [FormKeys.LastName]: '',
         [FormKeys.Email]: '',
