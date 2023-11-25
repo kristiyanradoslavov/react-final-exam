@@ -44,17 +44,15 @@ export const login = async (values) => {
         }
     }
 
-    if (token) {
-        httpHeaders.headers = {
-            ...httpHeaders.headers,
-            'X-Authorization': token
-        };
-    }
+    // if (token) {
+    //     httpHeaders.headers = {
+    //         ...httpHeaders.headers,
+    //         'X-Authorization': token
+    //     };
+    // }
 
     const response = await fetch(`${BaseUrl}/login`, httpHeaders);
     const result = await response.json();
-
-    console.log(result);
 
     return result
 }

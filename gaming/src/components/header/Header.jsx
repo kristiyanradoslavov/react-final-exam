@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './header.module.css'
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/authContext';
 
 export default function Header({
     createUserHandler,
@@ -13,6 +15,7 @@ export default function Header({
         openLoginModal();
     }
 
+    const { isAuthenticated } = useContext(AuthContext)
     return (
         <header className="header-area header-sticky">
             <div className="container">
@@ -38,20 +41,28 @@ export default function Header({
                                 <li>
                                     <Link to="contacts">Contact Us</Link>
                                 </li>
-                                <li>
-                                    <button className={styles["auth-btns"]}>Shopping cart</button>
-                                </li>
 
-                                <li>
-                                    <button className={styles["auth-btns"]} onClick={registerBtnHandler}>Register</button>
-                                </li>
-                                <li>
-                                    <button className={styles["auth-btns"]} onClick={loginBtnHandler}>Login</button>
-                                </li>
+                                {!isAuthenticated && (
+                                    <>
+                                        <li>
+                                            <button className={styles["auth-btns"]} onClick={registerBtnHandler}>Register</button>
+                                        </li>
+                                        <li>
+                                            <button className={styles["auth-btns"]} onClick={loginBtnHandler}>Login</button>
+                                        </li>
+                                    </>
+                                )}
 
-                                <li>
-                                    <button className={styles["auth-btns"]}>Logout</button>
-                                </li>
+                                {isAuthenticated && (
+                                    <>
+                                        <li>
+                                            <button className={styles["auth-btns"]}>Shopping cart</button>
+                                        </li>
+                                        <li>
+                                            <button className={styles["auth-btns"]}>Logout</button>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
                             <a className="menu-trigger">
                                 <span>Menu</span>

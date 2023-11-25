@@ -20,6 +20,7 @@ function App() {
 
     const [createUserModal, setCreateUserModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false);
+    const [auth, setAuth] = useState({});
 
     const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ function App() {
                 throw new Error('This user already exists')
             }
 
-            
+
             localStorage.setItem('accessToken', result.accessToken)
 
             closeRegisterModal();
@@ -45,8 +46,13 @@ function App() {
         try {
             const result = await login(values);
 
-            localStorage.setItem('accessToken', result.accessToken);
+            if (result.code === 403) {
+                throw new Error("Invalid credentials")
+            }
 
+            // localStorage.setItem('accessToken', result.accessToken);
+
+            setAuth(result);
             closeLoginModal();
             navigate('catalogue');
 
@@ -75,6 +81,7 @@ function App() {
     const context = {
         registerSubmitHandler,
         loginSubmitHandler,
+        isAuthenticated: !!auth.email,
     }
 
     return (
