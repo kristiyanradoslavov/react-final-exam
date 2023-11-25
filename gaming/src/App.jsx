@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom"
 
 import { useState } from "react"
 import { AuthContext } from "./contexts/authContext";
-import { login, register } from "./services/authServices";
+import * as authServices from "./services/authServices";
 
 import Header from "./components/Header/Header"
 import Home from "./components/home/Home"
@@ -26,16 +26,15 @@ function App() {
 
     const registerSubmitHandler = async (values) => {
         try {
-            const result = await register(values)
+            const result = await authServices.register(values)
             if (result.code === 409) {
                 throw new Error('This user already exists')
             }
-
-
-            localStorage.setItem('accessToken', result.accessToken)
+            // localStorage.setItem('accessToken', result.accessToken)
 
             closeRegisterModal();
             navigate('/');
+            setAuth(result);
 
         } catch (error) {
             console.log(error);
@@ -44,7 +43,7 @@ function App() {
 
     const loginSubmitHandler = async (values) => {
         try {
-            const result = await login(values);
+            const result = await authServices.login(values);
 
             if (result.code === 403) {
                 throw new Error("Invalid credentials")
@@ -101,7 +100,6 @@ function App() {
 
                 {createUserModal && <RegisterModal closeRegisterModal={closeRegisterModal} />}
                 {loginModal && <LoginModal closeLoginModal={closeLoginModal} />}
-
 
                 <Footer />
             </AuthContext.Provider>

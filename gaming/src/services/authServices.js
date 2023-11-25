@@ -19,12 +19,12 @@ export const register = async (values) => {
         }
     }
 
-    if (token) {
-        httpHeaders.headers = {
-            ...httpHeaders.headers,
-            'X-Authorization': token
-        };
-    }
+    // if (token) {
+    //     httpHeaders.headers = {
+    //         ...httpHeaders.headers,
+    //         'X-Authorization': token
+    //     };
+    // }
 
 
     const response = await fetch(`${BaseUrl}/register`, httpHeaders);
