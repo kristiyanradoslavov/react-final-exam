@@ -12,11 +12,11 @@ export default function Catalogue() {
 
     useEffect(() => {
         gamesServices.getAllGames()
-            .then(data => setGames(data))
+            .then(data => setGames(data));
 
     }, [])
 
-    const { gameId } = useParams();
+    // const { gameId } = useParams();
 
     return (
         <>

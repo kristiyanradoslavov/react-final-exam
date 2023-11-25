@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import styles from './newGameForm.module.css'
 
+import { Link } from 'react-router-dom';
+
 import useForm from '../../hooks/useForm';
 import { createNewGame } from '../../services/gamesServices';
+import Path from '../../paths';
 
 
 const NewGameKeys = {
@@ -48,7 +51,7 @@ export default function NewGameForm() {
                         <div className="col-lg-12">
                             <h3>Add New Game</h3>
                             <span className="breadcrumb">
-                                <a href="#">Home</a> &gt; <a href="#">Catalogue</a> &gt; Add Game
+                                <Link to={Path.Home}>Home</Link> &gt; <Link to={Path.Catalogue}>Catalogue</Link> &gt; Add Game
                             </span>
                         </div>
                     </div>

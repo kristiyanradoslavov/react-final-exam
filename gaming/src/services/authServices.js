@@ -1,6 +1,5 @@
 const BaseUrl = 'http://localhost:3030/users'
 
-
 export const register = async (values) => {
     const token = localStorage.getItem('accessToken');
 

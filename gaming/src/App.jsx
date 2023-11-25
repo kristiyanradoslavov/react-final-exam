@@ -20,7 +20,11 @@ function App() {
 
     const [createUserModal, setCreateUserModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false);
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState(() => {
+        localStorage.removeItem('accessToken');
+
+        return {};
+    });
 
     const navigate = useNavigate();
 
