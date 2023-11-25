@@ -13,6 +13,7 @@ import Catalogue from "./components/catalogue/Catalogue"
 import RegisterModal from "./components/register-modal/RegisterModal"
 import LoginModal from "./components/login-modal/LoginModal"
 import NewGameForm from "./components/new-game-form/NewGameForm"
+import Path from "./paths";
 
 
 function App() {
@@ -83,11 +84,11 @@ function App() {
             <AuthContext.Provider value={context}>
                 <Header createUserHandler={openRegisterModal} openLoginModal={openLoginModal} />
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="catalogue" element={<Catalogue />} />
-                    <Route path="/product-details/:gameId" element={<ProductDetails />} />
-                    <Route path="contacts" element={<Contacts />} />
-                    <Route path="add-new-game" element={<NewGameForm />} />
+                    <Route path={Path.Home} element={<Home />} />
+                    <Route path={Path.Catalogue} element={<Catalogue />} />
+                    <Route path={`${Path.ProductDetails}/:gameId`} element={<ProductDetails />} />
+                    <Route path={Path.Contacts} element={<Contacts />} />
+                    <Route path={Path.AddNewGame} element={<NewGameForm />} />
 
                 </Routes>
 
