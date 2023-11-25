@@ -30,11 +30,13 @@ function App() {
             if (result.code === 409) {
                 throw new Error('This user already exists')
             }
-            // localStorage.setItem('accessToken', result.accessToken)
 
             closeRegisterModal();
-            navigate('/');
             setAuth(result);
+
+            localStorage.setItem('accessToken', result.accessToken)
+
+            navigate('/');
 
         } catch (error) {
             console.log(error);
@@ -49,14 +51,25 @@ function App() {
                 throw new Error("Invalid credentials")
             }
 
-            // localStorage.setItem('accessToken', result.accessToken);
-
             setAuth(result);
+            localStorage.setItem('accessToken', result.accessToken)
             closeLoginModal();
             navigate('catalogue');
 
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    const logoutSubmitHandler = async () => {
+        try {
+            const result = await authServices.logout();
+            setAuth({});
+            localStorage.removeItem('accessToken')
+            navigate(Path.Home);
+
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -80,6 +93,7 @@ function App() {
     const context = {
         registerSubmitHandler,
         loginSubmitHandler,
+        logoutSubmitHandler,
         isAuthenticated: !!auth.email,
     }
 

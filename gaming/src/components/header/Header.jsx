@@ -14,8 +14,12 @@ export default function Header({
     const loginBtnHandler = () => {
         openLoginModal();
     }
+    
+    const logoutBtnHandler = () => {
+        logoutSubmitHandler();
+    }
 
-    const { isAuthenticated } = useContext(AuthContext)
+    const { isAuthenticated, logoutSubmitHandler } = useContext(AuthContext)
     return (
         <header className="header-area header-sticky">
             <div className="container">
@@ -59,7 +63,7 @@ export default function Header({
                                             <button className={styles["auth-btns"]}>Shopping cart</button>
                                         </li>
                                         <li>
-                                            <button className={styles["auth-btns"]}>Logout</button>
+                                            <button className={styles["auth-btns"]} onClick={logoutBtnHandler}>Logout</button>
                                         </li>
                                     </>
                                 )}
