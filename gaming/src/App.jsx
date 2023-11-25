@@ -36,7 +36,7 @@ function App() {
 
             localStorage.setItem('accessToken', result.accessToken)
 
-            navigate('/');
+            navigate(Path.Home);
 
         } catch (error) {
             console.log(error);
@@ -54,7 +54,7 @@ function App() {
             setAuth(result);
             localStorage.setItem('accessToken', result.accessToken)
             closeLoginModal();
-            navigate('catalogue');
+            navigate(Path.Catalogue);
 
         } catch (error) {
             console.log(error);
@@ -64,6 +64,10 @@ function App() {
     const logoutSubmitHandler = async () => {
         try {
             const result = await authServices.logout();
+            if(!result.ok) {
+                throw result
+            }
+
             setAuth({});
             localStorage.removeItem('accessToken')
             navigate(Path.Home);
