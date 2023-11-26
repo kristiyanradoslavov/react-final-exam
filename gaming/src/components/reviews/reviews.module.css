@@ -1,0 +1,17 @@
+.no-reviews {
+    text-align: center;
+}
+
+.review-wrapper {
+    margin-bottom: 30px;
+}
+
+.review-wrapper:last-child {
+    margin-bottom: 0px;
+}
+
+
+.reviewer-name {
+    font-style: italic;
+    font-weight: bold;
+}

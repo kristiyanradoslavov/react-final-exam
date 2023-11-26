@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleGame } from "../../services/gamesServices";
 
+import Reviews from "../reviews/Reviews";
+import NewReviewForm from "../reviews/new-review-form/NewReviewForm";
+
 export default function ProductDetails() {
 
     const [game, setGame] = useState({});
@@ -150,13 +153,13 @@ export default function ProductDetails() {
                                             role="tabpanel"
                                             aria-labelledby="reviews-tab"
                                         >
-                                            <p>
-                                                Coloring book air plant shabby chic, crucifix normcore
-                                                raclette cred swag artisan activated charcoal. PBR&amp;B
-                                                fanny pack pok pok gentrify truffaut kitsch helvetica jean
-                                                shorts edison bulb poutine next level humblebrag la croix
-                                                adaptogen.
-                                            </p>
+
+                                            <NewReviewForm />
+
+                                            {/* START OF REVIEWS */}
+
+                                            <Reviews />
+
                                         </div>
                                     </div>
                                 </div>
