@@ -54,7 +54,6 @@ function App() {
             if (result.code === 403) {
                 throw new Error("Invalid credentials")
             }
-
             setAuth(result);
             localStorage.setItem('accessToken', result.accessToken)
             closeLoginModal();
@@ -103,6 +102,8 @@ function App() {
         loginSubmitHandler,
         logoutSubmitHandler,
         isAuthenticated: !!auth.email,
+        name: auth.firstName,
+        email: auth.email,
     }
 
     return (
