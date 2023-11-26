@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleGame } from "../../services/gamesServices";
+import { useContext } from 'react';
+import { AuthContext } from "../../contexts/authContext";
+
 
 import Reviews from "../reviews/Reviews";
 import NewReviewForm from "../reviews/new-review-form/NewReviewForm";
 
+import * as reviewServices from '../../services/reviewServices';
+
 export default function ProductDetails() {
 
     const [game, setGame] = useState({});
+    const [reviews, setReviews] = useState([]);
 
     const { gameId } = useParams();
+    const { name, email } = useContext(AuthContext);
 
     useEffect(() => {
         getSingleGame(gameId)
@@ -19,7 +26,33 @@ export default function ProductDetails() {
                 console.log(error)
             })
 
+        reviewServices.getGameReviews(gameId)
+            .then(result => {
+                setReviews(result);
+            });
+
+        // console.log(result);
+
     }, [gameId])
+
+
+
+    const addNewReviewHandler = async (value) => {
+        const finalData = {
+            newReview: value['new-comment'],
+            name,
+            email,
+            gameId,
+        }
+
+        try {
+            const result = await reviewServices.newReview(finalData);
+            setReviews(oldValue => [...oldValue, result]);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>
@@ -115,7 +148,7 @@ export default function ProductDetails() {
                                                     aria-controls="reviews"
                                                     aria-selected="false"
                                                 >
-                                                    Reviews (3)
+                                                    Reviews ({reviews.length})
                                                 </button>
                                             </li>
                                         </ul>
@@ -154,11 +187,18 @@ export default function ProductDetails() {
                                             aria-labelledby="reviews-tab"
                                         >
 
-                                            <NewReviewForm />
+                                            <NewReviewForm addNewReviewHandler={addNewReviewHandler} />
 
                                             {/* START OF REVIEWS */}
 
-                                            <Reviews />
+                                            {(reviews.length === 0) && (
+                                                <h3>No reviews yet</h3>
+
+                                            )}
+
+                                            {reviews.map((review) => {
+                                                return <Reviews key={review._id} {...review} />
+                                            })}
 
                                         </div>
                                     </div>

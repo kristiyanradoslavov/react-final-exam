@@ -1,34 +1,15 @@
 import useForm from '../../../hooks/useForm';
 import styles from './newReviewForm.module.css';
 
-import * as reviewServices from '../../../services/reviewServices';
-import { useContext } from 'react';
-import { AuthContext } from '../../../contexts/authContext';
-
 const formValueKeys = {
     NewReview: 'new-comment'
 }
 
-export default function NewReviewForm() {
+export default function NewReviewForm({
+    addNewReviewHandler,
+}) {
 
-    const { name, email } = useContext(AuthContext);
-
-    const formSubmitHandler = async (value) => {
-        const finalData = {
-            newReview: value['new-comment'],
-            name,
-            email,
-        }
-
-        try {
-            await reviewServices.newComment(finalData);
-            
-        } catch (error) {
-            console.log(error)
-        }
-     }
-
-    const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
+    const { values, onChange, onSubmit } = useForm(addNewReviewHandler, {
         [formValueKeys.NewReview]: '',
     })
 

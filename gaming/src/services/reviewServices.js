@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3030/data/reviews'
 
-export const newComment = async (values) => {
+export const newReview = async (values) => {
     const token = localStorage.getItem('accessToken');
 
     const httpHeaders = {
@@ -18,17 +18,22 @@ export const newComment = async (values) => {
     return result;
 }
 
-export const getGameComments = async () => {
+export const getGameReviews = async (gameId) => {
+    const query = new URLSearchParams({
+        where: `gameId="${gameId}"`
+    });
+    
     const token = localStorage.getItem('accessToken');
 
     const httpHeaders = {
         method: 'GET',
-        body: JSON.stringify(values),
         headers: {
             'content-type': 'application/json',
-            'X-Authorization': token,
         }
     }
+    
+    const response = await fetch(`${baseUrl}?${query}`, httpHeaders);
+    const result = await response.json();
 
-
+    return result;
 }
