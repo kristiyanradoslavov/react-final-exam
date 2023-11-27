@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleGame } from "../../services/gamesServices";
-import { useContext } from 'react';
 import { AuthContext } from "../../contexts/authContext";
 
+import * as reviewServices from '../../services/reviewServices';
+import * as gameServices from '../../services/gamesServices';
 
 import Reviews from "../reviews/Reviews";
 import NewReviewForm from "../reviews/new-review-form/NewReviewForm";
 
-import * as reviewServices from '../../services/reviewServices';
 
 export default function ProductDetails() {
 
@@ -19,19 +18,25 @@ export default function ProductDetails() {
     const { name, email } = useContext(AuthContext);
 
     useEffect(() => {
-        getSingleGame(gameId)
-            .then((result) => setGame(result))
-            // TODO: BETTER ERROR HANDLING
+        gameServices.getSingleGame(gameId)
+            .then((gameResult) => {
+                setGame(gameResult)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+
+        reviewServices.getGameReviews(gameId)
+            .then((reviewResult) => {
+                setReviews(reviewResult);
+            })
+
             .catch((error) => {
                 console.log(error)
             })
 
-        reviewServices.getGameReviews(gameId)
-            .then(result => {
-                setReviews(result);
-            });
-
-        // console.log(result);
+        // TODO: BETTER ERROR HANDLING
 
     }, [gameId])
 
@@ -47,7 +52,11 @@ export default function ProductDetails() {
 
         try {
             const result = await reviewServices.newReview(finalData);
-            setReviews(oldValue => [...oldValue, result]);
+            
+            setReviews(oldValue => ([
+                ...oldValue,
+                result
+            ]));
 
         } catch (error) {
             console.log(error)
@@ -191,14 +200,14 @@ export default function ProductDetails() {
 
                                             {/* START OF REVIEWS */}
 
-                                            {(reviews.length === 0) && (
-                                                <h3>No reviews yet</h3>
+                                            {(reviews.length === 0) &&
+                                                (<h3>No reviews yet</h3>)
 
-                                            )}
+                                            }
 
-                                            {reviews.map((review) => {
+                                            {(reviews.map((review) => {
                                                 return <Reviews key={review._id} {...review} />
-                                            })}
+                                            }))}
 
                                         </div>
                                     </div>

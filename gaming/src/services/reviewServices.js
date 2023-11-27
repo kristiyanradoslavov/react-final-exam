@@ -13,6 +13,11 @@ export const newReview = async (values) => {
     }
 
     const response = await fetch(baseUrl, httpHeaders);
+
+    if (!response.ok) {
+        throw response;
+    }
+
     const result = await response.json();
 
     return result;
@@ -33,6 +38,11 @@ export const getGameReviews = async (gameId) => {
     }
     
     const response = await fetch(`${baseUrl}?${query}`, httpHeaders);
+
+    if (!response.ok) {
+        throw response;
+    }
+
     const result = await response.json();
 
     return result;
