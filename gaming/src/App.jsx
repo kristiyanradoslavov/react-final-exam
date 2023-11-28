@@ -1,8 +1,7 @@
-import { Routes, Route, useNavigate } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 
 import { useState } from "react"
-import { AuthContext } from "./contexts/authContext";
-import * as authServices from "./services/authServices";
+import { AuthContext, AuthProvider } from "./contexts/authContext";
 
 import Header from "./components/Header/Header"
 import Home from "./components/home/Home"
@@ -20,65 +19,6 @@ function App() {
 
     const [createUserModal, setCreateUserModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false);
-    const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accessToken');
-
-        return {};
-    });
-
-    const navigate = useNavigate();
-
-    const registerSubmitHandler = async (values) => {
-        try {
-            const result = await authServices.register(values)
-            if (result.code === 409) {
-                throw new Error('This user already exists')
-            }
-
-            closeRegisterModal();
-            setAuth(result);
-
-            localStorage.setItem('accessToken', result.accessToken)
-
-            navigate(Path.Home);
-
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const loginSubmitHandler = async (values) => {
-        try {
-            const result = await authServices.login(values);
-
-            if (result.code === 403) {
-                throw new Error("Invalid credentials")
-            }
-            setAuth(result);
-            localStorage.setItem('accessToken', result.accessToken)
-            closeLoginModal();
-            navigate(Path.Catalogue);
-
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const logoutSubmitHandler = async () => {
-        try {
-            const result = await authServices.logout();
-            if(!result.ok) {
-                throw result
-            }
-
-            setAuth({});
-            localStorage.removeItem('accessToken')
-            navigate(Path.Home);
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     // start of modal open close; TODO: move them in a better place
     const openRegisterModal = () => {
@@ -97,20 +37,11 @@ function App() {
         setLoginModal(false)
     }
 
-    const context = {
-        registerSubmitHandler,
-        loginSubmitHandler,
-        logoutSubmitHandler,
-        isAuthenticated: !!auth.email,
-        name: auth.firstName,
-        email: auth.email,
-    }
-
     return (
         <>
             {/* Preloader */}
 
-            <AuthContext.Provider value={context}>
+            <AuthProvider closeRegisterModal={closeRegisterModal} closeLoginModal={closeLoginModal}>
                 <Header createUserHandler={openRegisterModal} openLoginModal={openLoginModal} />
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />
@@ -125,7 +56,7 @@ function App() {
                 {loginModal && <LoginModal closeLoginModal={closeLoginModal} />}
 
                 <Footer />
-            </AuthContext.Provider>
+            </AuthProvider>
         </>
 
     )
