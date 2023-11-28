@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 import * as authServices from "../services/authServices";
 import Path from "../paths";
+import usePersistedState from "../hooks/usePersistedState";
 // import { closeRegisterModal, closeLoginModal } from '../App'
 
 
@@ -14,11 +15,7 @@ export const AuthProvider = ({
     closeLoginModal,
 }) => {
 
-    const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accessToken');
-
-        return {};
-    });
+    const [auth, setAuth] = usePersistedState('accessToken', {});
 
     // AUTH PART
     const navigate = useNavigate();
@@ -33,7 +30,7 @@ export const AuthProvider = ({
             closeRegisterModal();
             setAuth(result);
 
-            localStorage.setItem('accessToken', result.accessToken)
+            // localStorage.setItem('accessToken', result.accessToken)
 
             navigate(Path.Home);
 
@@ -50,7 +47,9 @@ export const AuthProvider = ({
                 throw new Error("Invalid credentials")
             }
             setAuth(result);
-            localStorage.setItem('accessToken', result.accessToken)
+
+            // localStorage.setItem('accessToken', result.accessToken)
+
             closeLoginModal();
             navigate(Path.Catalogue);
 
