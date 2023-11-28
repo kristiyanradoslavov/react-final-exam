@@ -1,12 +1,20 @@
 import { Link } from 'react-router-dom'
 import styles from './header.module.css'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/authContext';
+import Path from '../../paths';
 
 export default function Header({
     createUserHandler,
     openLoginModal
 }) {
+
+    const [activeTab, setActiveTab] = useState('Home');
+
+    const tabClickHandler = (tabName) => {
+        setActiveTab(tabName);
+    }
+
     const registerBtnHandler = () => {
         createUserHandler();
     }
@@ -14,7 +22,7 @@ export default function Header({
     const loginBtnHandler = () => {
         openLoginModal();
     }
-    
+
     const logoutBtnHandler = () => {
         logoutSubmitHandler();
     }
@@ -27,23 +35,38 @@ export default function Header({
                     <div className="col-12">
                         <nav className="main-nav">
                             {/* ***** Logo Start ***** */}
-                            <a href="index.html" className="logo">
-                                <img src="assets/images/logo.png" alt="" style={{ width: 158 }} />
-                            </a>
+                            <Link to={Path.Home} className="logo">
+                                <img src="/assets/images/logo.png" alt="" style={{ width: 158 }} />
+                            </Link>
                             {/* ***** Logo End ***** */}
                             {/* ***** Menu Start ***** */}
                             <ul className="nav">
                                 <li>
-                                    <Link to="/" className="active">Home</Link>
+                                    <Link
+                                        to={Path.Home}
+                                        className={activeTab === 'Home' ? 'active' : ""}
+                                        onClick={() => tabClickHandler('Home')}
+                                    >
+                                        Home
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link to="catalogue">Catalogue</Link>
+                                    <Link
+                                        to={Path.Catalogue}
+                                        className={activeTab === 'Catalogue' ? 'active' : ""}
+                                        onClick={() => tabClickHandler('Catalogue')}
+                                    >
+                                        Catalogue
+                                    </Link>
                                 </li>
-                                {/* <li>
-                                    <Link to="product-details">Product Details</Link>
-                                </li> */}
                                 <li>
-                                    <Link to="contacts">Contact Us</Link>
+                                    <Link
+                                        to={Path.Contacts}
+                                        className={activeTab === 'Contacts' ? 'active' : ""}
+                                        onClick={() => tabClickHandler('Contacts')}
+                                    >
+                                        Contact Us
+                                    </Link>
                                 </li>
 
                                 {!isAuthenticated && (

@@ -41,7 +41,6 @@ export default function ProductDetails() {
     }, [gameId])
 
 
-
     const addNewReviewHandler = async (value) => {
         const finalData = {
             newReview: value['new-comment'],
