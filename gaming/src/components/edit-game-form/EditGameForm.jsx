@@ -1,11 +1,9 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+
 import styles from './editGameForm.module.css'
-
-import { Link } from 'react-router-dom';
-
-import useForm from '../../hooks/useForm';
-import { createNewGame } from '../../services/gamesServices';
 import Path from '../../paths';
+import * as gameServices from '../../services/gamesServices';
 
 
 const EditGameKeys = {
@@ -18,30 +16,26 @@ const EditGameKeys = {
 
 
 export default function EditGameForm() {
-    
+
     const { gameId } = useParams();
     const navigate = useNavigate();
+    const [oldValue, setOldValue] = useState({});
 
-    const formSubmitHandler = (submitValues) => {
-
+    useEffect(() => {
         try {
-            createNewGame(submitValues);
-            navigate(`${Path.ProductDetails}/${gameId}`)
+            gameServices.getSingleGame(gameId)
+                .then((result) => setOldValue(result))
 
-        } catch {
-            // TODO: BETTER ERROR HANDLING
-            console.log('error when creating game')
+        } catch (error) {
+            console.log(error)
         }
+    }, [gameId]);
+
+    const onChange = () => {
+        console.log(oldValue)
     }
 
-    const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
-        [EditGameKeys.Title]: '',
-        [EditGameKeys.Category]: '',
-        [EditGameKeys.ImageUrl]: '',
-        [EditGameKeys.Price]: '',
-        [EditGameKeys.Description]: '',
 
-    });
 
     return (
 
@@ -59,14 +53,14 @@ export default function EditGameForm() {
                 </div>
             </div>
 
-            <form className={styles['game-form']} onSubmit={onSubmit}>
+            <form className={styles['game-form']}>
                 <div className={styles['form-group']}>
                     <label htmlFor="title">Game title</label>
                     <input
                         id="title"
                         name="title"
                         type="text"
-                        values={values[EditGameKeys.Title]}
+                        value={oldValue.title}
                         onChange={onChange}
                     />
 
@@ -76,7 +70,7 @@ export default function EditGameForm() {
                             id="category"
                             name="category"
                             type="text"
-                            values={values[EditGameKeys.Category]}
+                            value={oldValue.category}
                             onChange={onChange}
                         />
 
@@ -89,7 +83,7 @@ export default function EditGameForm() {
                         id="imageUrl"
                         name="imageUrl"
                         type="text"
-                        values={values[EditGameKeys.ImageUrl]}
+                        value={oldValue.imageUrl}
                         onChange={onChange}
                     />
 
@@ -100,7 +94,7 @@ export default function EditGameForm() {
                             id="price"
                             name="price"
                             type="text"
-                            values={values[EditGameKeys.Price]}
+                            value={oldValue.price}
                             onChange={onChange}
                         />
 
@@ -113,7 +107,7 @@ export default function EditGameForm() {
                         id="description"
                         name="description"
                         type="text"
-                        values={values[EditGameKeys.Description]}
+                        value={oldValue.description}
                         onChange={onChange}
                     />
                 </div>
