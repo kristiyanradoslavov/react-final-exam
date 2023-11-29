@@ -15,7 +15,7 @@ export const AuthProvider = ({
     closeLoginModal,
 }) => {
 
-    const [auth, setAuth] = usePersistedState('accessToken', {});
+    const [auth, setAuth] = usePersistedState('auth', {});
 
     // AUTH PART
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ export const AuthProvider = ({
             closeRegisterModal();
             setAuth(result);
 
-            // localStorage.setItem('accessToken', result.accessToken)
+            localStorage.setItem('accessToken', result.accessToken)
 
             navigate(Path.Home);
 
@@ -43,12 +43,13 @@ export const AuthProvider = ({
         try {
             const result = await authServices.login(values);
 
+
             if (result.code === 403) {
                 throw new Error("Invalid credentials")
             }
             setAuth(result);
 
-            // localStorage.setItem('accessToken', result.accessToken)
+            localStorage.setItem('accessToken', result.accessToken)
 
             closeLoginModal();
             navigate(Path.Catalogue);

@@ -63,6 +63,8 @@ export const login = async (values) => {
 export const logout = async () => {
     const token = localStorage.getItem('accessToken');
 
+    // console.log(token)
+
     const httpHeaders = {
         method: 'GET',
         headers: {
