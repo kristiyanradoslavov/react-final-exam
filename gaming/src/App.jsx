@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom"
 
 import { useState } from "react"
-import { AuthContext, AuthProvider } from "./contexts/authContext";
+import { AuthProvider } from "./contexts/authContext";
 
+import Path from "./paths";
 import Header from "./components/Header/Header"
 import Home from "./components/home/Home"
 import Footer from "./components/footer/Footer"
@@ -12,7 +13,7 @@ import Catalogue from "./components/catalogue/Catalogue"
 import RegisterModal from "./components/register-modal/RegisterModal"
 import LoginModal from "./components/login-modal/LoginModal"
 import NewGameForm from "./components/new-game-form/NewGameForm"
-import Path from "./paths";
+import EditGameForm from "./components/edit-game-form/EditGameForm";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
                     <Route path={`${Path.ProductDetails}/:gameId`} element={<ProductDetails />} />
                     <Route path={Path.Contacts} element={<Contacts />} />
                     <Route path={Path.AddNewGame} element={<NewGameForm />} />
+                    <Route path={`${Path.EditGame}/:gameId`} element={<EditGameForm />} />
 
                 </Routes>
 

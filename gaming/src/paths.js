@@ -3,7 +3,8 @@ const Path = {
     Catalogue: '/catalogue',
     ProductDetails: '/product-details',
     Contacts: '/contacts',
-    AddNewGame: 'add-new-game',
+    AddNewGame: '/add-new-game',
+    EditGame: '/edit-game'
 }
 
 export default Path

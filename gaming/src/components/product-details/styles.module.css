@@ -1,0 +1,20 @@
+.action-btns {
+    display: flex;
+    gap: 20px;
+}
+
+
+.change-btn {
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    transition: all 0.4s ease 0s;
+    width: 140px;
+    text-align: center;
+}
+
+.change-btn:hover {
+    background-color: rgb(67, 205, 240);
+}

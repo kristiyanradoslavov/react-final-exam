@@ -1,12 +1,14 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
 import * as reviewServices from '../../services/reviewServices';
 import * as gameServices from '../../services/gamesServices';
+import styles from './styles.module.css';
 
 import Reviews from "../reviews/Reviews";
 import NewReviewForm from "../reviews/new-review-form/NewReviewForm";
+import Path from "../../paths";
 
 
 export default function ProductDetails() {
@@ -51,7 +53,7 @@ export default function ProductDetails() {
 
         try {
             const result = await reviewServices.newReview(finalData);
-            
+
             setReviews(oldValue => ([
                 ...oldValue,
                 result
@@ -116,6 +118,11 @@ export default function ProductDetails() {
                                     <a href="#">Battle</a>, <a href="#">Royal</a>
                                 </li> */}
                             </ul>
+                        </div>
+
+                        <div className={styles['action-btns']}>
+                            <Link className={styles['change-btn']} to={`${Path.EditGame}/${gameId}`}>Edit game</Link>
+                            <button className={styles['change-btn']}>Delete Game</button>
                         </div>
                         <div className="col-lg-12">
                             <div className="sep" />
