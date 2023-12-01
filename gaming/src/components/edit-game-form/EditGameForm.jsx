@@ -19,6 +19,7 @@ export default function EditGameForm() {
 
     const { gameId } = useParams();
     const navigate = useNavigate();
+
     const [oldValue, setOldValue] = useState({
         Title: '',
         Category: '',
@@ -45,6 +46,20 @@ export default function EditGameForm() {
     }
 
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+        try {
+            gameServices.editGame(gameId, oldValue)
+            .then((result) => {
+                // console.log(result);
+                navigate(`${Path.ProductDetails}/${gameId}`)
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return (
 
@@ -62,7 +77,7 @@ export default function EditGameForm() {
                 </div>
             </div>
 
-            <form className={styles['game-form']}>
+            <form className={styles['game-form']} onSubmit={onSubmit}>
                 <div className={styles['form-group']}>
                     <label htmlFor="title">Game title</label>
                     <input

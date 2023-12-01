@@ -35,3 +35,23 @@ export const getSingleGame = async (gameId) => {
     
     return result;
 }
+
+
+export const editGame = async (gameId, gameData) => {
+    const token = localStorage.getItem('accessToken');
+
+    const httpHeaders = {
+        method: "PUT",
+        body: JSON.stringify(gameData),
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token
+        }
+    }
+
+    const response = await fetch(`${baseUrl}/${gameId}`, httpHeaders);
+
+    const result = response.json();
+
+    return result;
+}
