@@ -19,7 +19,13 @@ export default function EditGameForm() {
 
     const { gameId } = useParams();
     const navigate = useNavigate();
-    const [oldValue, setOldValue] = useState({});
+    const [oldValue, setOldValue] = useState({
+        Title: '',
+        Category: '',
+        ImageUrl: '',
+        Price: '',
+        Description: '',
+    });
 
     useEffect(() => {
         try {
@@ -31,8 +37,11 @@ export default function EditGameForm() {
         }
     }, [gameId]);
 
-    const onChange = () => {
-        console.log(oldValue)
+    const onChange = (e) => {
+        setOldValue({
+            ...oldValue,
+            [e.target.name]: e.target.value
+        })
     }
 
 
