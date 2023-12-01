@@ -21,11 +21,11 @@ export default function EditGameForm() {
     const navigate = useNavigate();
 
     const [oldValue, setOldValue] = useState({
-        Title: '',
-        Category: '',
-        ImageUrl: '',
-        Price: '',
-        Description: '',
+        [EditGameKeys.Title]: '',
+        [EditGameKeys.Category]: '',
+        [EditGameKeys.ImageUrl]: '',
+        [EditGameKeys.Price]: '',
+        [EditGameKeys.Description]: '',
     });
 
     useEffect(() => {
@@ -39,21 +39,22 @@ export default function EditGameForm() {
     }, [gameId]);
 
     const onChange = (e) => {
-        setOldValue({
-            ...oldValue,
+        setOldValue(state => ({
+            ...state,
             [e.target.name]: e.target.value
-        })
+        }))
     }
 
 
     const onSubmit = (e) => {
         e.preventDefault();
+
         try {
             gameServices.editGame(gameId, oldValue)
-            .then((result) => {
-                // console.log(result);
-                navigate(`${Path.ProductDetails}/${gameId}`)
-            })
+                .then((result) => {
+                    // console.log(result);
+                    navigate(`${Path.ProductDetails}/${gameId}`)
+                })
 
         } catch (error) {
             console.log(error)
