@@ -19,7 +19,7 @@ export default function ProductDetails() {
     const [modalState, setModalState] = useState(false);
 
     const { gameId } = useParams();
-    const { name, email } = useContext(AuthContext);
+    const { name, email, userId } = useContext(AuthContext);
 
     useEffect(() => {
         gameServices.getSingleGame(gameId)
@@ -135,7 +135,7 @@ export default function ProductDetails() {
                         </div>
 
                         <div className={styles['action-btns']}>
-                            {(email === game.ownerEmail) && (
+                            {(userId === game._ownerId) && (
                                 <>
                                     <Link className={styles['change-btn']} to={`${Path.EditGame}/${gameId}`}>Edit game</Link>
                                     <button className={styles['change-btn']} onClick={deleteBtnHandler}>Delete Game</button>

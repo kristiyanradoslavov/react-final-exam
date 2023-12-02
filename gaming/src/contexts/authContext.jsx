@@ -89,6 +89,7 @@ export const AuthProvider = ({
         isAuthenticated: !!auth.email,
         name: auth.firstName,
         email: auth.email,
+        userId: auth._id
     }
 
     return (
