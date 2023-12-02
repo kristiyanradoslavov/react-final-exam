@@ -1,9 +1,15 @@
 import styles from "./deleteModal.module.css";
+import * as gamesServices from '../../services/gamesServices'
+import { useNavigate } from "react-router-dom";
+import Path from "../../paths";
 
 
 export default function DeleteModal({
     closeModalHandler,
-}) {
+    gameId,
+}) {    
+
+    const navigate = useNavigate();
 
 
     const closeButtonHandler = () => {
@@ -11,7 +17,13 @@ export default function DeleteModal({
     }
 
     const deleteBtnHandler = () => {
-        console.log('delete')
+        gamesServices.deleteGame(gameId)
+            .then(result => {
+                navigate(Path.Catalogue)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
     return (
         <div className={styles['overlay']} >

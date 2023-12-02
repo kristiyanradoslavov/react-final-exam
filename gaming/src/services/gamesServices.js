@@ -32,7 +32,7 @@ export const getSingleGame = async (gameId) => {
 
     const response = await fetch(`${baseUrl}/${gameId}`);
     const result = await response.json();
-    
+
     return result;
 }
 
@@ -52,6 +52,24 @@ export const editGame = async (gameId, gameData) => {
     const response = await fetch(`${baseUrl}/${gameId}`, httpHeaders);
 
     const result = response.json();
+
+    return result;
+}
+
+export const deleteGame = async (gameId) => {
+    const token = localStorage.getItem('accessToken');
+
+    const httpHeaders = {
+        method: "DELETE",
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token
+        }
+    }
+
+    const response = await fetch(`${baseUrl}/${gameId}`, httpHeaders);
+
+    const result = await response.json();
 
     return result;
 }
