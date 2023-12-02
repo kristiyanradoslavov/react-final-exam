@@ -72,7 +72,7 @@ export default function ProductDetails() {
                         <div className="col-lg-12">
                             <h3>{game.title}</h3>
                             <span className="breadcrumb">
-                                <a href="#">Home</a> &gt; <a href="#">Shop</a> &gt; Assasin Creed
+                                <Link to={Path.Home}>Home</Link> &gt; <Link to={Path.Catalogue}>Catalogue</Link> &gt; Assasin Creed
                             </span>
                         </div>
                     </div>
@@ -108,7 +108,11 @@ export default function ProductDetails() {
                             </form>
                             <ul>
                                 <li>
-                                    <span>Game Owner:</span> some name
+                                    <span>Game Owner Name: {game.ownerName}</span>
+                                </li>
+
+                                <li>
+                                    <span>Game Owner Email: {game.ownerEmail}</span>
                                 </li>
                                 <li>
                                     <span>Genre:</span> <a href="#">{game.category}</a>
@@ -121,8 +125,12 @@ export default function ProductDetails() {
                         </div>
 
                         <div className={styles['action-btns']}>
-                            <Link className={styles['change-btn']} to={`${Path.EditGame}/${gameId}`}>Edit game</Link>
-                            <button className={styles['change-btn']}>Delete Game</button>
+                            {(email === game.ownerEmail) && (
+                                <>
+                                    <Link className={styles['change-btn']} to={`${Path.EditGame}/${gameId}`}>Edit game</Link>
+                                    <button className={styles['change-btn']}>Delete Game</button>
+                                </>
+                            )}
                         </div>
                         <div className="col-lg-12">
                             <div className="sep" />

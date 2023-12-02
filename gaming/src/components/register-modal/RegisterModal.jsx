@@ -15,12 +15,18 @@ const FormKeys = {
 }
 
 export default function RegisterModal({
-    closeRegisterModal
+    closeRegisterModal,
+    openLoginModal,
 }) {
 
 
     const closeButtonHandler = () => {
         closeRegisterModal()
+    }
+
+    const loginBtnHandler = () => {
+        closeRegisterModal();
+        openLoginModal();
     }
 
     const { registerSubmitHandler } = useContext(AuthContext);
@@ -140,7 +146,7 @@ export default function RegisterModal({
                 {/* TODO: add functionality to the button here */}
                 <div className={styles['change-modal']}>
                     Already have an account ?
-                    <button className={styles['reroute-btn']}>Login</button>
+                    <button className={styles['reroute-btn']} onClick={loginBtnHandler}>Login</button>
                 </div>
             </div>
         </div>

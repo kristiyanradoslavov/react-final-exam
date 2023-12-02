@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import * as gamesServices from "../../services/gamesServices";
 
 import Product from "../product/Product";
 import styles from './catalogue.module.css'
 import NewGameBtn from "../new-game-btn/NewGameBtn";
+import { AuthContext } from "../../contexts/authContext";
+import Path from "../../paths";
 
 export default function Catalogue() {
     const [games, setGames] = useState([]);
@@ -16,7 +18,7 @@ export default function Catalogue() {
 
     }, [])
 
-    // const { gameId } = useParams();
+    const { isAuthenticated } = useContext(AuthContext);
 
     return (
         <>
@@ -26,7 +28,7 @@ export default function Catalogue() {
                         <div className="col-lg-12">
                             <h3>Our Shop</h3>
                             <span className="breadcrumb">
-                                <a href="/">Home</a> &gt; Our Shop
+                                <Link to={Path.Home}>Home</Link> &gt; Our Shop
                             </span>
                         </div>
                     </div>
@@ -59,7 +61,7 @@ export default function Catalogue() {
 
                     <div className={styles['games-wrapper']}>
 
-                        <NewGameBtn />
+                        {isAuthenticated && <NewGameBtn />}
 
                         {games.map((game =>
                             <Product key={game._id} gameData={game} gameId={game._id} />

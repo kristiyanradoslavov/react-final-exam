@@ -11,13 +11,19 @@ const LoginKeys = {
 
 export default function LoginModal({
     closeLoginModal,
+    openRegisterModal,
 }) {
 
     const closeButtonHandler = () => {
-        closeLoginModal()
+        closeLoginModal();
     }
 
-    const { loginSubmitHandler } = useContext(AuthContext)
+    const registerBtnHandler = () => {
+        closeLoginModal();
+        openRegisterModal();
+    }
+
+    const { loginSubmitHandler } = useContext(AuthContext);
 
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         [LoginKeys.Email]: '',
@@ -76,7 +82,7 @@ export default function LoginModal({
                 {/* TODO: add functionality to the button here */}
                 <div className={styles['change-modal']}>
                     Dont have an account yet ?
-                    <button className={styles['reroute-btn']}>Register</button>
+                    <button className={styles['reroute-btn']} onClick={registerBtnHandler}>Register</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import styles from './newGameForm.module.css'
 
@@ -7,6 +6,8 @@ import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import { createNewGame } from '../../services/gamesServices';
 import Path from '../../paths';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/authContext';
 
 
 const NewGameKeys = {
@@ -20,11 +21,16 @@ const NewGameKeys = {
 export default function NewGameForm() {
 
     const navigate = useNavigate();
+    const { name, email } = useContext(AuthContext);
 
     const formSubmitHandler = (submitValues) => {
 
         try {
-            createNewGame(submitValues);
+            createNewGame({
+                ...submitValues,
+                ownerName: name,
+                ownerEmail: email,
+            });
             navigate('/catalogue')
 
         } catch {

@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom'
-import styles from './header.module.css'
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom'
+
+import styles from './header.module.css'
+
 import { AuthContext } from '../../contexts/authContext';
+
 import Path from '../../paths';
 
 export default function Header({
