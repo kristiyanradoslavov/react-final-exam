@@ -6,7 +6,7 @@ import Path from "../../paths";
 
 export default function DeleteModal({
     closeModalHandler,
-    gameId,
+    gameInfo,
 }) {    
 
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function DeleteModal({
     }
 
     const deleteBtnHandler = () => {
-        gamesServices.deleteGame(gameId)
+        gamesServices.deleteGame(gameInfo._id)
             .then(result => {
                 navigate(Path.Catalogue)
             })
@@ -31,7 +31,7 @@ export default function DeleteModal({
             <div className={styles['modal']}>
                 <div className={styles['user-container']}>
                     <div className={styles['form-header']}>
-                        <p className={styles['text-info']}>Are you sure you want to delete Mortal Combat ? </p>
+                        <p className={styles['text-info']}>Are you sure you want to delete {gameInfo.title} ? </p>
                     </div>
 
                     <div className={styles['btn-wrapper']}>

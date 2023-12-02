@@ -140,7 +140,7 @@ export default function ProductDetails() {
                                     <Link className={styles['change-btn']} to={`${Path.EditGame}/${gameId}`}>Edit game</Link>
                                     <button className={styles['change-btn']} onClick={deleteBtnHandler}>Delete Game</button>
 
-                                    {modalState && <DeleteModal closeModalHandler={closeModalHandler} gameId={gameId} />}
+                                    {modalState && <DeleteModal closeModalHandler={closeModalHandler} gameInfo={game} />}
                                 </>
                             )}
                         </div>

@@ -9,6 +9,9 @@ import NewGameBtn from "../new-game-btn/NewGameBtn";
 import { AuthContext } from "../../contexts/authContext";
 import Path from "../../paths";
 
+
+const PageSize = 8;
+
 export default function Catalogue() {
     const [games, setGames] = useState([]);
 
@@ -74,17 +77,17 @@ export default function Catalogue() {
                                 <li>
                                     <a href="#"> &lt; </a>
                                 </li>
-                                <li>
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a className="is_active" href="#">
-                                        2
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
+
+                                {[...Array(Math.ceil(games.length / PageSize))].map((_, index) => (
+                                     <li>
+                                        <button className={'is_active'} href="#">{index + 1}</button>
+                                    </li>
+                                ))}
+
+                                {/* <li>
+                                    <a className={'is_active'} href="#">1</a>
+                                </li> */}
+
                                 <li>
                                     <a href="#"> &gt; </a>
                                 </li>
