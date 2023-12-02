@@ -9,12 +9,14 @@ import styles from './styles.module.css';
 import Reviews from "../reviews/Reviews";
 import NewReviewForm from "../reviews/new-review-form/NewReviewForm";
 import Path from "../../paths";
+import DeleteModal from "../delete-modal/DeleteModal";
 
 
 export default function ProductDetails() {
 
     const [game, setGame] = useState({});
     const [reviews, setReviews] = useState([]);
+    const [modalState, setModalState] = useState(false);
 
     const { gameId } = useParams();
     const { name, email } = useContext(AuthContext);
@@ -62,6 +64,14 @@ export default function ProductDetails() {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const deleteBtnHandler = () => {
+        setModalState(true);
+    }
+
+    const closeModalHandler = () => {
+        setModalState(false);
     }
 
     return (
@@ -128,7 +138,9 @@ export default function ProductDetails() {
                             {(email === game.ownerEmail) && (
                                 <>
                                     <Link className={styles['change-btn']} to={`${Path.EditGame}/${gameId}`}>Edit game</Link>
-                                    <button className={styles['change-btn']}>Delete Game</button>
+                                    <button className={styles['change-btn']} onClick={deleteBtnHandler}>Delete Game</button>
+
+                                    {modalState && <DeleteModal closeModalHandler={closeModalHandler} />}
                                 </>
                             )}
                         </div>
