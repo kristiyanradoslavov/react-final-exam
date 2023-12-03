@@ -92,7 +92,7 @@ export default function ProductDetails() {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
-                            <div className="left-image">
+                            <div className={styles['left-image']}>
                                 <img src={`${game.imageUrl}`} alt={`${game.title}`} />
                             </div>
                         </div>
@@ -116,16 +116,16 @@ export default function ProductDetails() {
                                     <i className="fa fa-shopping-bag" /> ADD TO CART
                                 </button>
                             </form>
-                            <ul>
+                            <ul className={styles['game-information']}>
                                 <li>
-                                    <span>Game Owner Name: {game.ownerName}</span>
+                                    <p>Owner Name: <span>{game.ownerName}</span></p>
                                 </li>
 
                                 <li>
-                                    <span>Game Owner Email: {game.ownerEmail}</span>
+                                    <p>Owner Email: <span>{game.ownerEmail}</span></p>
                                 </li>
-                                <li>
-                                    <span>Genre:</span> <a href="#">{game.category}</a>
+                                <li className={styles['genre-wrapper']}>
+                                    <p>Genre:</p> <a href="#">{game.category}</a>
                                 </li>
                                 {/* <li>
                                     <span>Multi-tags:</span> <a href="#">War</a>,{" "}

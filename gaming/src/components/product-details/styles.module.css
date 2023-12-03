@@ -18,3 +18,29 @@
 .change-btn:hover {
     background-color: rgb(67, 205, 240);
 }
+
+.left-image img {
+    max-width: 600px;
+}
+
+.game-information li p {
+    margin: 0px;
+}
+
+
+.game-information li {
+    margin: 0px!important;
+}
+
+.genre-wrapper {
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+.game-information p span {
+    font-style: italic !important;
+    font-weight: bold !important;
+    color: black !important;
+    margin-left: 12px;
+}
