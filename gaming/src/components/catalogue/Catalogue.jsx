@@ -10,18 +10,37 @@ import { AuthContext } from "../../contexts/authContext";
 import Path from "../../paths";
 
 
-const PageSize = 8;
+const PageSize = 10;
 
 export default function Catalogue() {
-    const [games, setGames] = useState([]);
+    const [gamesPerPage, setGamesPerPage] = useState([]);
+    const [allGames, setAllGames] = useState([]);
+    const [page, setPage] = useState(0);
+    const [selectedGames, setSelectedGames] = useState('all')
 
     useEffect(() => {
-        gamesServices.getAllGames()
-            .then(data => setGames(data));
+        gamesServices.getAllGames(selectedGames)
+            .then(data => {
+                setAllGames(data);
+                setGamesPerPage(data);
+            });
 
-    }, [])
+    }, [selectedGames])
+
+
+    useEffect(() => {
+        const skip = page * PageSize
+        gamesServices.getGamesPerPage(skip, PageSize, selectedGames)
+            .then((data) => {
+                setGamesPerPage(data);
+            })
+    }, [page, selectedGames])
 
     const { isAuthenticated } = useContext(AuthContext);
+
+    const filterBtnHandler = (e) => {
+        setSelectedGames(e.target.name);
+    }
 
     return (
         <>
@@ -41,24 +60,32 @@ export default function Catalogue() {
                 <div className="container">
                     <ul className="trending-filter">
                         <li>
-                            <a className="is_active" href="#!" data-filter="*">
+                            <button onClick={filterBtnHandler} name="all"
+                                className={selectedGames === 'all' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
+                            >
                                 Show All
-                            </a>
+                            </button>
                         </li>
                         <li>
-                            <a href="#!" data-filter=".adv">
+                            <button onClick={filterBtnHandler} name="Adventure"
+                                className={selectedGames === 'Adventure' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
+                            >
                                 Adventure
-                            </a>
+                            </button>
                         </li>
                         <li>
-                            <a href="#!" data-filter=".str">
+                            <button onClick={filterBtnHandler} name="Strategy"
+                                className={selectedGames === 'Strategy' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
+                            >
                                 Strategy
-                            </a>
+                            </button>
                         </li>
                         <li>
-                            <a href="#!" data-filter=".rac">
+                            <button onClick={filterBtnHandler} name="Racing"
+                                className={selectedGames === 'Racing' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
+                            >
                                 Racing
-                            </a>
+                            </button>
                         </li>
                     </ul>
 
@@ -66,7 +93,7 @@ export default function Catalogue() {
 
                         {isAuthenticated && <NewGameBtn />}
 
-                        {games.map((game =>
+                        {gamesPerPage.map((game =>
                             <Product key={game._id} gameData={game} gameId={game._id} />
                         ))}
                     </div>
@@ -75,21 +102,48 @@ export default function Catalogue() {
                         <div className="col-lg-12">
                             <ul className="pagination">
                                 <li>
-                                    <a href="#"> &lt; </a>
+                                    <button
+                                        className={styles['page-btn']}
+                                        onClick={() => {
+                                            if (page > 0) {
+                                                setPage(oldValue => (
+                                                    oldValue - 1
+                                                ))
+                                            }
+                                        }}
+                                    > &lt;
+                                    </button>
                                 </li>
 
-                                {[...Array(Math.ceil(games.length / PageSize))].map((_, index) => (
-                                     <li>
-                                        <button className={'is_active'} href="#">{index + 1}</button>
+                                {[...Array(Math.ceil(allGames.length / PageSize))].map((_, index) => (
+                                    <li key={index + 1}>
+                                        <button
+                                            className={
+                                                page === index
+                                                    ?
+                                                    `${styles['page-btn']} ${styles['is_active']}`
+                                                    :
+                                                    `${styles['page-btn']}`
+                                            }
+                                            onClick={() => setPage(index)}
+                                        >
+                                            {index + 1}
+                                        </button>
                                     </li>
                                 ))}
 
-                                {/* <li>
-                                    <a className={'is_active'} href="#">1</a>
-                                </li> */}
-
                                 <li>
-                                    <a href="#"> &gt; </a>
+                                    <button
+                                        className={styles['page-btn']}
+                                        onClick={() => {
+                                            if ((Math.ceil(allGames.length / PageSize)) > (page + 1)) {
+                                                setPage(oldValue => (
+                                                    oldValue + 1
+                                                ))
+                                            }
+                                        }}
+                                    > &gt;
+                                    </button>
                                 </li>
                             </ul>
                         </div>

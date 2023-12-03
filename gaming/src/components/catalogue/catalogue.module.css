@@ -3,3 +3,47 @@
     flex-wrap: wrap;
     gap: 30px;
 }
+
+.page-btn {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #eee;
+    color: #1e1e1e;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50%;
+    transition: all .3s;
+    border: none;
+}
+
+.page-btn:hover {
+    background-color: #0071f8;
+    color: #fff
+}
+
+.is_active {
+    background-color: #0071f8;
+    color: white;
+}
+
+.filter-btn {
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #1e1e1e;
+    background-color: #eee;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all .3s;
+    border: none;
+}
+
+.active-filter {
+    background-color: #ee626b;
+    color: #fff;
+}

@@ -1,7 +1,16 @@
 const baseUrl = 'http://localhost:3030/data/games'
 
 
-export const getAllGames = async () => {
+export const getAllGames = async (filterBy) => {
+    if (filterBy != 'all') {
+        const query = new URLSearchParams({
+            where: `category="${filterBy}"`
+        });
+
+        const response = await fetch(`${baseUrl}?${query}`);
+        const data = await response.json();
+        return data;
+    }
 
     const response = await fetch(baseUrl);
     const data = await response.json();
@@ -71,5 +80,29 @@ export const deleteGame = async (gameId) => {
 
     const result = await response.json();
 
+    return result;
+}
+
+export const getGamesPerPage = async (skip, pageSize, filterBy) => {
+    const httpHeaders = {
+        method: "GET",
+        headers: {
+            'content-type': 'application/json',
+        }
+    }
+
+    if (filterBy != 'all') {
+        const query = new URLSearchParams({
+            where: `category="${filterBy}"`
+        });
+
+        const response = await fetch(`${baseUrl}?offset=${skip}&pageSize=${pageSize}&${query}`, httpHeaders);
+        const result = await response.json();
+        return result;
+
+    }
+
+    const response = await fetch(`${baseUrl}?offset=${skip}&pageSize=${pageSize}`, httpHeaders);
+    const result = await response.json();
     return result;
 }
