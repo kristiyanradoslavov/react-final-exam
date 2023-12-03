@@ -15,6 +15,7 @@ import NewGameForm from "./components/new-game-form/NewGameForm"
 import EditGameForm from "./components/edit-game-form/EditGameForm";
 import AuthGuard from "./components/guards/AuthGuard";
 import useModalState from "./hooks/useModalState";
+import ShoppingCart from "./components/shopping-cart/ShoppingCart";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
                     <Route element={<AuthGuard />}>
 
                         <Route path={Path.AddNewGame} element={<NewGameForm />} />
+                        <Route path={Path.ShoppingCart} element={<ShoppingCart />} />
 
                     </Route>
 

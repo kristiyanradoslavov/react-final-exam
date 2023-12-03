@@ -86,7 +86,7 @@ export default function Header({
                                 {isAuthenticated && (
                                     <>
                                         <li>
-                                            <button className={styles["auth-btns"]}>Shopping cart</button>
+                                            <Link to={Path.ShoppingCart} className={styles["auth-btns"]}>Shopping cart</Link>
                                         </li>
                                         <li>
                                             <button className={styles["auth-btns"]} onClick={logoutBtnHandler}>Logout</button>

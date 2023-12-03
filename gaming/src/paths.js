@@ -4,7 +4,8 @@ const Path = {
     ProductDetails: '/product-details',
     Contacts: '/contacts',
     AddNewGame: '/add-new-game',
-    EditGame: '/edit-game'
+    EditGame: '/edit-game',
+    ShoppingCart: '/shopping-cart',
 }
 
 export default Path
