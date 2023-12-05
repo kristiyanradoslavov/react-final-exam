@@ -3,6 +3,7 @@ import useForm from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/authContext';
 
 import styles from './registerModal.module.css'
+import registerValidator from '../../validators/registerValidator';
 
 const FormKeys = {
     FirstName: 'first-name',
@@ -32,7 +33,7 @@ export default function RegisterModal({
     const { registerSubmitHandler } = useContext(AuthContext);
 
 
-    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    const { values, errors, onChange, onSubmit } = useForm(registerSubmitHandler, registerValidator, {
         [FormKeys.FirstName]: '',
         [FormKeys.LastName]: '',
         [FormKeys.Email]: '',
@@ -62,6 +63,7 @@ export default function RegisterModal({
 
                     <form onSubmit={onSubmit}>
                         <div className={styles['form-row']}>
+
                             <div className={styles['form-group']}>
                                 <label htmlFor="first-name">First name</label>
                                 <input
@@ -71,6 +73,16 @@ export default function RegisterModal({
                                     values={values[FormKeys.FirstName]}
                                     onChange={onChange}
                                 />
+
+                                {errors[FormKeys.FirstName]
+                                    &&
+                                    <div className={styles['error-wrapper']}>
+                                        <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                        <div className={styles['error-msg']}>
+                                            {errors[FormKeys.FirstName]}
+                                        </div>
+                                    </div>
+                                }
                             </div>
 
                             <div className={styles['form-group']}>
@@ -83,7 +95,19 @@ export default function RegisterModal({
                                     onChange={onChange}
                                 />
 
+                                {errors[FormKeys.LastName]
+                                    &&
+                                    <div className={styles['error-wrapper']}>
+                                        <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                        <div className={styles['error-msg']}>
+                                            {errors[FormKeys.LastName]}
+                                        </div>
+                                    </div>
+                                }
                             </div>
+
+
+
                         </div>
 
                         <div className={styles['form-row']}>

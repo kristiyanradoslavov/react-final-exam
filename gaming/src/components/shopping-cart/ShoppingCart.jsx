@@ -165,7 +165,7 @@ export default function ShoppingCart() {
                                                         </div>
                                                     </div> */}
                                                 </div>
-                                                {/* <div className="col-lg-5">
+                                                <div className="col-lg-5">
                                                     <div className="card bg-primary text-white rounded-3">
                                                         <div className="card-body">
                                                             <div className="d-flex justify-content-between align-items-center mb-4">
@@ -279,7 +279,7 @@ export default function ShoppingCart() {
                                                             </button>
                                                         </div>
                                                     </div>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

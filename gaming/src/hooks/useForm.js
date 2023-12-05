@@ -1,8 +1,9 @@
 import { useState } from "react";
 
-export default function useForm(submitHandler, initialValues) {
-    
+export default function useForm(submitHandler, validator, initialValues) {
+
     const [values, setValues] = useState(initialValues);
+    const [errors, setErrors] = useState({});
 
     const onChange = (e) => {
         setValues(state => ({
@@ -14,12 +15,21 @@ export default function useForm(submitHandler, initialValues) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        
-        submitHandler(values);
+
+        const validateErrors = validator(values);
+
+        setErrors(validateErrors)
+
+        if (Object.keys(validateErrors).length === 0) {
+
+            submitHandler(values);
+        }
+
     }
 
     return {
         values,
+        errors,
         onChange,
         onSubmit,
     }

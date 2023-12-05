@@ -50,7 +50,7 @@ export default function Catalogue() {
                         <div className="col-lg-12">
                             <h3>Our Shop</h3>
                             <span className="breadcrumb">
-                                <Link to={Path.Home}>Home</Link> &gt; Our Shop
+                                <Link to={Path.Home}>   </Link> &gt; Our Shop
                             </span>
                         </div>
                     </div>
