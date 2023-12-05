@@ -104,7 +104,7 @@ export default function RegisterModal({
                                             return <li key={index} className={styles['error-wrapper']}>
                                                 <img src="assets/images/error.png" alt="" className={styles['error-img']} />
                                                 <div className={styles['error-msg']}>
-                                                    {(errors[FormKeys.LastName])}
+                                                    {error}
                                                 </div>
                                             </li>
                                         })
@@ -126,7 +126,19 @@ export default function RegisterModal({
                                     values={values[FormKeys.Email]}
                                     onChange={onChange}
                                 />
-
+                                <ul>
+                                    {errors[FormKeys.Email]
+                                        &&
+                                        (errors[FormKeys.Email]).map((error, index) => {
+                                            return <li key={index} className={styles['error-wrapper']}>
+                                                <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                                <div className={styles['error-msg']}>
+                                                    {error}
+                                                </div>
+                                            </li>
+                                        })
+                                    }
+                                </ul>
                             </div>
 
                             <div className={styles['form-group']}>
@@ -139,6 +151,19 @@ export default function RegisterModal({
                                     onChange={onChange}
                                 />
 
+                                <ul>
+                                    {errors[FormKeys.PhoneNumber]
+                                        &&
+                                        (errors[FormKeys.PhoneNumber]).map((error, index) => {
+                                            return <li key={index} className={styles['error-wrapper']}>
+                                                <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                                <div className={styles['error-msg']}>
+                                                    {error}
+                                                </div>
+                                            </li>
+                                        })
+                                    }
+                                </ul>
                             </div>
                         </div>
 
@@ -151,6 +176,20 @@ export default function RegisterModal({
                                 values={values[FormKeys.Password]}
                                 onChange={onChange}
                             />
+
+                            <ul>
+                                {errors[FormKeys.Password]
+                                    &&
+                                    (errors[FormKeys.Password]).map((error, index) => {
+                                        return <li key={index} className={styles['error-wrapper']}>
+                                            <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                            <div className={styles['error-msg']}>
+                                                {error}
+                                            </div>
+                                        </li>
+                                    })
+                                }
+                            </ul>
                         </div>
 
                         <div className={`${styles['form-group']} ${styles['long-line']}}`}>
@@ -162,6 +201,20 @@ export default function RegisterModal({
                                 values={values[FormKeys.RepeatPassword]}
                                 onChange={onChange}
                             />
+
+                            <ul>
+                                {errors[FormKeys.RepeatPassword]
+                                    &&
+                                    (errors[FormKeys.RepeatPassword]).map((error, index) => {
+                                        return <li key={index} className={styles['error-wrapper']}>
+                                            <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                            <div className={styles['error-msg']}>
+                                                {error}
+                                            </div>
+                                        </li>
+                                    })
+                                }
+                            </ul>
                         </div>
 
                         <div id={styles['form-actions']}>
