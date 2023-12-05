@@ -73,16 +73,19 @@ export default function RegisterModal({
                                     values={values[FormKeys.FirstName]}
                                     onChange={onChange}
                                 />
-
-                                {errors[FormKeys.FirstName]
-                                    &&
-                                    <div className={styles['error-wrapper']}>
-                                        <img src="assets/images/error.png" alt="" className={styles['error-img']} />
-                                        <div className={styles['error-msg']}>
-                                            {errors[FormKeys.FirstName]}
-                                        </div>
-                                    </div>
-                                }
+                                <ul>
+                                    {errors[FormKeys.FirstName]
+                                        &&
+                                        (errors[FormKeys.FirstName]).map((error, index) => {
+                                            return <li key={index} className={styles['error-wrapper']}>
+                                                <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                                <div className={styles['error-msg']}>
+                                                    {error}
+                                                </div>
+                                            </li>
+                                        })
+                                    }
+                                </ul>
                             </div>
 
                             <div className={styles['form-group']}>
@@ -94,16 +97,19 @@ export default function RegisterModal({
                                     values={values[FormKeys.LastName]}
                                     onChange={onChange}
                                 />
-
-                                {errors[FormKeys.LastName]
-                                    &&
-                                    <div className={styles['error-wrapper']}>
-                                        <img src="assets/images/error.png" alt="" className={styles['error-img']} />
-                                        <div className={styles['error-msg']}>
-                                            {errors[FormKeys.LastName]}
-                                        </div>
-                                    </div>
-                                }
+                                <ul>
+                                    {errors[FormKeys.LastName]
+                                        &&
+                                        (errors[FormKeys.LastName]).map((error, index) => {
+                                            return <li key={index} className={styles['error-wrapper']}>
+                                                <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                                <div className={styles['error-msg']}>
+                                                    {(errors[FormKeys.LastName])}
+                                                </div>
+                                            </li>
+                                        })
+                                    }
+                                </ul>
                             </div>
 
 
