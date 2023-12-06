@@ -8,6 +8,7 @@ import { createNewGame } from '../../services/gamesServices';
 import Path from '../../paths';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/authContext';
+import newGameValidator from '../../validators/newGameValidator';
 
 
 const NewGameKeys = {
@@ -39,7 +40,7 @@ export default function NewGameForm() {
         }
     }
 
-    const { values, onChange, onSubmit } = useForm(formSubmitHandler, {
+    const { values, errors, onChange, onSubmit } = useForm(formSubmitHandler, newGameValidator, {
         [NewGameKeys.Title]: '',
         [NewGameKeys.Category]: '',
         [NewGameKeys.ImageUrl]: '',
@@ -74,6 +75,19 @@ export default function NewGameForm() {
                         values={values[NewGameKeys.Title]}
                         onChange={onChange}
                     />
+                    <ul>
+                        {errors[NewGameKeys.Title]
+                            &&
+                            (errors[NewGameKeys.Title]).map((error, index) => {
+                                return <li key={index} className={styles['error-wrapper']}>
+                                    <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                    <div className={styles['error-msg']}>
+                                        {error}
+                                    </div>
+                                </li>
+                            })
+                        }
+                    </ul>
 
                     <div className={styles['form-group']}>
                         <label htmlFor="category">Category</label>
@@ -84,7 +98,19 @@ export default function NewGameForm() {
                             values={values[NewGameKeys.Category]}
                             onChange={onChange}
                         />
-
+                        <ul>
+                            {errors[NewGameKeys.Category]
+                                &&
+                                (errors[NewGameKeys.Category]).map((error, index) => {
+                                    return <li key={index} className={styles['error-wrapper']}>
+                                        <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                        <div className={styles['error-msg']}>
+                                            {error}
+                                        </div>
+                                    </li>
+                                })
+                            }
+                        </ul>
                     </div>
                 </div>
 
@@ -97,7 +123,19 @@ export default function NewGameForm() {
                         values={values[NewGameKeys.ImageUrl]}
                         onChange={onChange}
                     />
-
+                    <ul>
+                        {errors[NewGameKeys.ImageUrl]
+                            &&
+                            (errors[NewGameKeys.ImageUrl]).map((error, index) => {
+                                return <li key={index} className={styles['error-wrapper']}>
+                                    <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                    <div className={styles['error-msg']}>
+                                        {error}
+                                    </div>
+                                </li>
+                            })
+                        }
+                    </ul>
 
                     <div className={styles['form-group']}>
                         <label htmlFor="price">Price</label>
@@ -108,6 +146,20 @@ export default function NewGameForm() {
                             values={values[NewGameKeys.Price]}
                             onChange={onChange}
                         />
+
+                        <ul>
+                            {errors[NewGameKeys.Price]
+                                &&
+                                (errors[NewGameKeys.Price]).map((error, index) => {
+                                    return <li key={index} className={styles['error-wrapper']}>
+                                        <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                        <div className={styles['error-msg']}>
+                                            {error}
+                                        </div>
+                                    </li>
+                                })
+                            }
+                        </ul>
 
                     </div>
                 </div>
@@ -121,6 +173,19 @@ export default function NewGameForm() {
                         values={values[NewGameKeys.Description]}
                         onChange={onChange}
                     />
+                    <ul>
+                        {errors[NewGameKeys.Description]
+                            &&
+                            (errors[NewGameKeys.Description]).map((error, index) => {
+                                return <li key={index} className={styles['error-wrapper']}>
+                                    <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                    <div className={styles['error-msg']}>
+                                        {error}
+                                    </div>
+                                </li>
+                            })
+                        }
+                    </ul>
                 </div>
 
                 <div id={styles['form-actions']}>
