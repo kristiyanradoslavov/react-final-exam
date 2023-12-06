@@ -10,9 +10,9 @@ export default function MostPlayed() {
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="main-button">
+                        {/* <div className="main-button">
                             <a href="shop.html">View All</a>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-lg-2 col-md-6 col-sm-6">
                         <div className="item">

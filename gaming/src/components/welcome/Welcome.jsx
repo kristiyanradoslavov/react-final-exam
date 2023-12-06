@@ -16,7 +16,7 @@ export default function Welcome() {
                                 <form id="search" action="#">
                                     <input
                                         type="text"
-                                        placeholder="Type Something"
+                                        placeholder="Search Game"
                                         id="searchText"
                                         name="searchKeyword"
                                     />

@@ -10,9 +10,9 @@ export default function Trending() {
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="main-button">
+                        {/* <div className="main-button">
                             <a href="shop.html">View All</a>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <div className="item">
