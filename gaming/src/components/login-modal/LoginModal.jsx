@@ -1,7 +1,8 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import useForm from '../../hooks/useForm'
 import styles from './LoginModal.module.css'
 import { AuthContext } from '../../contexts/authContext'
+import loginValidator from '../../validators/loginValidator'
 
 const LoginKeys = {
     Email: 'email',
@@ -14,6 +15,8 @@ export default function LoginModal({
     openRegisterModal,
 }) {
 
+    const [submitErrors, setSubmitErrors] = useState([]);
+
     const closeButtonHandler = () => {
         closeLoginModal();
     }
@@ -25,7 +28,15 @@ export default function LoginModal({
 
     const { loginSubmitHandler } = useContext(AuthContext);
 
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    const { values, errors, onChange, onSubmit } = useForm(
+        async (values) => {
+            const submitError = await loginSubmitHandler(values);
+
+            if (submitError) {
+                setSubmitErrors(submitError);
+            }
+        }
+        , loginValidator, {
         [LoginKeys.Email]: '',
         [LoginKeys.Password]: '',
     })
@@ -57,6 +68,20 @@ export default function LoginModal({
                                 values={values[LoginKeys.Email]}
                                 onChange={onChange}
                             />
+
+                            <ul>
+                                {errors[LoginKeys.Email]
+                                    &&
+                                    (errors[LoginKeys.Email]).map((error, index) => {
+                                        return <li key={index} className={styles['error-wrapper']}>
+                                            <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                            <div className={styles['error-msg']}>
+                                                {error}
+                                            </div>
+                                        </li>
+                                    })
+                                }
+                            </ul>
                         </div>
 
                         <div className={styles['form-group']}>
@@ -68,6 +93,29 @@ export default function LoginModal({
                                 values={values[LoginKeys.Password]}
                                 onChange={onChange}
                             />
+
+                            <ul>
+                                {errors[LoginKeys.Password]
+                                    &&
+                                    (errors[LoginKeys.Password]).map((error, index) => {
+                                        return <li key={index} className={styles['error-wrapper']}>
+                                            <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                            <div className={styles['error-msg']}>
+                                                {error}
+                                            </div>
+                                        </li>
+                                    })
+                                }
+                            </ul>
+
+                            {(submitErrors.length != 0) &&
+                                <div className={styles['error-wrapper']}>
+                                    <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                    <div className={styles['error-msg']}>
+                                        {submitErrors}
+                                    </div>
+                                </div>
+                            }
                         </div>
 
                         <div id={styles['form-actions']}>

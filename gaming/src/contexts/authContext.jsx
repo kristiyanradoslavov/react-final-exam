@@ -45,8 +45,9 @@ export const AuthProvider = ({
 
 
             if (result.code === 403) {
-                throw new Error("Invalid credentials")
+                throw new Error("Invalid Email or password!")
             }
+
             setAuth(result);
 
             localStorage.setItem('accessToken', result.accessToken)
@@ -55,7 +56,8 @@ export const AuthProvider = ({
             navigate(Path.Catalogue);
 
         } catch (error) {
-            console.log(error);
+            // console.error("Error in loginSubmitHandler:", error);
+            return error.message;
         }
     }
 

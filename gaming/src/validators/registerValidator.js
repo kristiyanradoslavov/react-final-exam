@@ -18,7 +18,7 @@ export default function registerValidator(values) {
 
     for (const currentValue of Object.values(FormKeys)) {
         if (values[currentValue].length === 0 || !values[currentValue].trim().length) {
-            errors[currentValue] = ['This field is mandatory!']
+            errors[currentValue] = ['This field is mandatory!'];
         }
     }
 
@@ -27,14 +27,14 @@ export default function registerValidator(values) {
         if (!errors.hasOwnProperty(FormKeys.FirstName)) {
             errors[FormKeys.FirstName] = [];
         }
-        errors[FormKeys.FirstName].push('The first name should contain only letters!')
+        errors[FormKeys.FirstName].push('The first name should contain only letters!');
     }
 
     if (!NameRegex.test(values[FormKeys.LastName])) {
         if (!errors.hasOwnProperty(FormKeys.LastName)) {
             errors[FormKeys.LastName] = [];
         }
-        errors[FormKeys.LastName].push('The last name should contain only letters!')
+        errors[FormKeys.LastName].push('The last name should contain only letters!');
     }
 
 
@@ -51,7 +51,7 @@ export default function registerValidator(values) {
             errors[FormKeys.PhoneNumber] = [];
         }
 
-        errors[FormKeys.PhoneNumber].push('The phone must start with 0 and be 10 digits long or start with 359 and be 12 digits long!')
+        errors[FormKeys.PhoneNumber].push('The phone must start with 0 and be 10 digits long or start with 359 and be 12 digits long!');
     }
 
     if (!PasswordRegex.test(values[FormKeys.Password])) {
@@ -59,7 +59,7 @@ export default function registerValidator(values) {
             errors[FormKeys.Password] = [];
         }
 
-        errors[FormKeys.Password].push('The password must contain at least 1 lower case letter, 1 upper case letter and one digit!')
+        errors[FormKeys.Password].push('The password must contain at least 1 lower case letter, 1 upper case letter and one digit!');
     }
 
 
@@ -69,7 +69,7 @@ export default function registerValidator(values) {
             errors[FormKeys.RepeatPassword] = [];
         }
 
-        errors[FormKeys.RepeatPassword].push('The two passwords don`t match!')
+        errors[FormKeys.RepeatPassword].push('The two passwords don`t match!');
     }
 
 
