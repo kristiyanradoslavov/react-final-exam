@@ -19,8 +19,19 @@
     background-color: rgb(67, 205, 240);
 }
 
+.left-image {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 20px;
+
+}
+
 .left-image img {
-    max-width: 600px;
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 .game-information li p {
@@ -30,6 +41,10 @@
 
 .game-information li {
     margin: 0px!important;
+}
+
+.game-info-wrapper ul {
+    margin: 0px !important;
 }
 
 .genre-wrapper {
@@ -43,4 +58,11 @@
     font-weight: bold !important;
     color: black !important;
     margin-left: 12px;
+}
+
+.game-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: space-between;
 }

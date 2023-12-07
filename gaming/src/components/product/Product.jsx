@@ -12,15 +12,12 @@ export default function Product({
                     <div className="thumb">
                         <img src={gameData.imageUrl} alt="" className={styles['product-img']} />
                         <span className="price">
-                            <em>$45</em>{gameData.price}
+                            $ {gameData.price}
                         </span>
                     </div>
                     <div className="down-content">
                         <span className="category">{gameData.category}</span>
                         <h4>{gameData.title}</h4>
-                        {/* <Link to="/product-details">
-                            <i className="fa fa-shopping-bag" />
-                        </Link> */}
                     </div>
                 </div>
             </div>

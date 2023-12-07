@@ -74,17 +74,17 @@ export default function Catalogue() {
                             </button>
                         </li>
                         <li>
-                            <button onClick={filterBtnHandler} name="Strategy"
-                                className={selectedGames === 'Strategy' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
+                            <button onClick={filterBtnHandler} name="Horror"
+                                className={selectedGames === 'Horror' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
                             >
-                                Strategy
+                                Horror
                             </button>
                         </li>
                         <li>
-                            <button onClick={filterBtnHandler} name="Racing"
-                                className={selectedGames === 'Racing' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
+                            <button onClick={filterBtnHandler} name="Shooter"
+                                className={selectedGames === 'Shooter' ? `${styles['filter-btn']} ${styles['active-filter']}` : styles['filter-btn']}
                             >
-                                Racing
+                                Shooter
                             </button>
                         </li>
                     </ul>
