@@ -25,8 +25,8 @@ export default function ShoppingCartForm({
             imageUrl: gameDetails.imageUrl,
             finalPrice: gameDetails.price * value.quantity,
             quantity: value.quantity,
-
         }
+        
         try {
             const serverResponse = await shoppingCartServices.createNewItem(finalItems)
             if (serverResponse.code === 403) {

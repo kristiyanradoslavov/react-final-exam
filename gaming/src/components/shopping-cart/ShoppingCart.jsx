@@ -1,6 +1,29 @@
+import { Link } from "react-router-dom";
+
+import * as shoppingCartServices from "../../services/shoppingCartServices"
+
 import styles from "./shoppingCart.module.css";
+import Path from "../../paths";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/authContext";
+import ShoppingCartItem from "../shopping-cart-form/shopping-cart-item/ShoppingCartItem";
 
 export default function ShoppingCart() {
+
+    const [items, setItems] = useState([])
+    const { userId } = useContext(AuthContext)
+
+    useEffect(() => {
+        shoppingCartServices.getAllItems(userId)
+            .then((result) => {
+                setItems(result)
+            })
+    }, [userId], [items])
+
+
+    const onItemDelete = (itemId) => {
+        setItems((oldValue) => oldValue.filter((item) => item._id !== itemId))
+    }
     return (
         <>
             <div className="page-heading header-text">
@@ -25,51 +48,35 @@ export default function ShoppingCart() {
                                             <div className="row">
                                                 <div className="col-lg-7">
                                                     <h5 className="mb-3">
-                                                        <a href="#!" className="text-body">
+                                                        <Link to={Path.Catalogue} className="text-body">
                                                             <i className="fas fa-long-arrow-alt-left me-2" />
                                                             Continue shopping
-                                                        </a>
+                                                        </Link>
                                                     </h5>
                                                     <hr />
                                                     <div className="d-flex justify-content-between align-items-center mb-4">
                                                         <div>
                                                             <p className="mb-1">Shopping cart</p>
-                                                            <p className="mb-0">You have 4 items in your cart</p>
+                                                            {items.length > 0 &&
+                                                                <p className="mb-0">You have {items.length} items in your cart</p>
+                                                            }
                                                         </div>
                                                         <div>
                                                         </div>
                                                     </div>
-                                                    <div className="card mb-3">
-                                                        <div className="card-body">
-                                                            <div className="d-flex justify-content-between">
-                                                                <div className="d-flex flex-row align-items-center">
-                                                                    <div>
-                                                                        <img
-                                                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                                                            className="img-fluid rounded-3"
-                                                                            alt="Shopping item"
-                                                                            style={{ width: 65 }}
-                                                                        />
-                                                                    </div>
-                                                                    <div className="ms-3">
-                                                                        <h5>Iphone 11 pro</h5>
-                                                                        <p className="small mb-0">256GB, Navy Blue</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="d-flex flex-row align-items-center">
-                                                                    <div style={{ width: 50 }}>
-                                                                        <h5 className="fw-normal mb-0">2</h5>
-                                                                    </div>
-                                                                    <div style={{ width: 80 }}>
-                                                                        <h5 className="mb-0">$900</h5>
-                                                                    </div>
-                                                                    <a href="#!" style={{ color: "#cecece" }}>
-                                                                        <i className="fas fa-trash-alt" />
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                                                    <ul>
+                                                        {items.length > 0 && items.map((item) =>
+                                                            <li key={item._id}>
+                                                                <ShoppingCartItem itemDetails={{ ...item }} onItemDelete={onItemDelete} />
+                                                            </li>
+                                                        )}
+                                                    </ul>
+
+                                                    {!items.length &&
+                                                        <div>No Items in cart yet</div>
+                                                    }
+
                                                     {/* <div className="card mb-3">
                                                         <div className="card-body">
                                                             <div className="d-flex justify-content-between">

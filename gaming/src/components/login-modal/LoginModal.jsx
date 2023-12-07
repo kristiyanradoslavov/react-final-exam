@@ -74,7 +74,7 @@ export default function LoginModal({
                                     &&
                                     (errors[LoginKeys.Email]).map((error, index) => {
                                         return <li key={index} className={styles['error-wrapper']}>
-                                            <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                            <img src="/assets/images/error.png" alt="" className={styles['error-img']} />
                                             <div className={styles['error-msg']}>
                                                 {error}
                                             </div>
@@ -99,7 +99,7 @@ export default function LoginModal({
                                     &&
                                     (errors[LoginKeys.Password]).map((error, index) => {
                                         return <li key={index} className={styles['error-wrapper']}>
-                                            <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                            <img src="/assets/images/error.png" alt="" className={styles['error-img']} />
                                             <div className={styles['error-msg']}>
                                                 {error}
                                             </div>
@@ -110,7 +110,7 @@ export default function LoginModal({
 
                             {(submitErrors.length != 0) &&
                                 <div className={styles['error-wrapper']}>
-                                    <img src="assets/images/error.png" alt="" className={styles['error-img']} />
+                                    <img src="/assets/images/error.png" alt="" className={styles['error-img']} />
                                     <div className={styles['error-msg']}>
                                         {submitErrors}
                                     </div>
