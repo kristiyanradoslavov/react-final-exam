@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useForm from '../../../hooks/useForm';
 import newReviewValidator from '../../../validators/newReviewValidator';
 import styles from './newReviewForm.module.css';
@@ -10,8 +11,17 @@ export default function NewReviewForm({
     addNewReviewHandler,
 }) {
 
+    const [serverError, setServerError] = useState([]);
 
-    const { values, errors, onChange, onSubmit } = useForm(addNewReviewHandler, newReviewValidator, {
+    const { values, errors, onChange, onSubmit } = useForm(
+        async (values) => {
+            const submitResult = await addNewReviewHandler(values);
+
+            if (submitResult) {
+                setServerError(submitResult);
+            }
+
+        }, newReviewValidator, {
         [formValueKeys.NewReview]: '',
     })
 
@@ -29,7 +39,7 @@ export default function NewReviewForm({
             >
 
             </textarea>
-            <ul>
+            <ul className={styles['ul-wrapper']}>
                 {errors[formValueKeys.NewReview]
                     &&
                     (errors[formValueKeys.NewReview]).map((error, index) => {
@@ -42,6 +52,15 @@ export default function NewReviewForm({
                     })
                 }
             </ul>
+
+            {(serverError.length != 0) &&
+                <div className={styles['error-wrapper']}>
+                    <img src="/assets/images/error.png" alt="" className={styles['error-img']} />
+                    <div className={styles['error-msg']}>
+                        {serverError}
+                    </div>
+                </div>
+            }
 
             <button className={styles['new-review-btn']}>Add Review</button>
         </form>

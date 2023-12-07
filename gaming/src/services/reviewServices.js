@@ -14,10 +14,6 @@ export const newReview = async (values) => {
 
     const response = await fetch(baseUrl, httpHeaders);
 
-    if (!response.ok) {
-        throw response;
-    }
-
     const result = await response.json();
 
     return result;
