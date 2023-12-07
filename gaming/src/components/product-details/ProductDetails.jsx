@@ -55,7 +55,6 @@ export default function ProductDetails() {
 
         try {
             const result = await reviewServices.newReview(finalData);
-            console.log(result);
 
             if (result.code === 403) {
                 throw new Error('You need to be logged in, in order to add a review!')

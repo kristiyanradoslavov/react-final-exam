@@ -23,7 +23,6 @@ export default function useForm(submitHandler, validator, initialValues) {
         if (Object.keys(validateErrors).length === 0) {
 
             submitHandler(values);
-
         }
 
     }

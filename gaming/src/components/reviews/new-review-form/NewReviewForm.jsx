@@ -12,18 +12,35 @@ export default function NewReviewForm({
 }) {
 
     const [serverError, setServerError] = useState([]);
+    const [values, setValues] = useState({[formValueKeys.NewReview]: ''});
+    const [errors, setErrors] = useState({});
 
-    const { values, errors, onChange, onSubmit } = useForm(
-        async (values) => {
+    const onChange = (e) => {
+        setValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        const validateErrors = newReviewValidator(values);
+
+        setErrors(validateErrors)
+
+        if (Object.keys(validateErrors).length === 0) {
+
             const submitResult = await addNewReviewHandler(values);
 
             if (submitResult) {
-                setServerError(submitResult);
+                setServerError(submitResult)
+            } else {
+                setValues({[formValueKeys.NewReview]: ''})
             }
+        }
 
-        }, newReviewValidator, {
-        [formValueKeys.NewReview]: '',
-    })
+    }
 
     return (
         <form className={styles['new-comment-wrapper']} onSubmit={onSubmit}>
@@ -34,7 +51,7 @@ export default function NewReviewForm({
                 cols="50"
                 rows="5"
                 className={styles['review-area']}
-                values={values[formValueKeys.NewReview]}
+                value={values[formValueKeys.NewReview]}
                 onChange={onChange}
             >
 
