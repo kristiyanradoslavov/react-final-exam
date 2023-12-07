@@ -10,6 +10,7 @@ import Reviews from "../reviews/Reviews";
 import NewReviewForm from "../reviews/new-review-form/NewReviewForm";
 import Path from "../../paths";
 import DeleteModal from "../delete-modal/DeleteModal";
+import ShoppingCartForm from "../shopping-cart-form/ShoppingCartForm";
 
 
 export default function ProductDetails() {
@@ -118,18 +119,7 @@ export default function ProductDetails() {
                                     </li>
                                 </ul>
 
-                                <form id="qty" action="#">
-                                    <input
-                                        type="qty"
-                                        className="form-control"
-                                        id={1}
-                                        aria-describedby="quantity"
-                                        placeholder={1}
-                                    />
-                                    <button type="submit">
-                                        <i className="fa fa-shopping-bag" /> ADD TO CART
-                                    </button>
-                                </form>
+                                {<ShoppingCartForm gameDetails={game}/>}
                             </div>
 
                         </div>
