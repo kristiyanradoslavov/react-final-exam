@@ -40,13 +40,13 @@ function App() {
                     <Route path={Path.Catalogue} element={<Catalogue openLoginModal={openLoginModal} />} />
                     <Route path={`${Path.ProductDetails}/:gameId`} element={<ProductDetails />} />
                     <Route path={Path.Contacts} element={<Contacts />} />
-                    <Route path={`${Path.EditGame}/:gameId`} element={<EditGameForm />} />
 
 
                     <Route element={<AuthGuard />}>
 
                         <Route path={Path.AddNewGame} element={<NewGameForm />} />
                         <Route path={Path.ShoppingCart} element={<ShoppingCart />} />
+                        <Route path={`${Path.EditGame}/:gameId`} element={<EditGameForm />} />
 
                     </Route>
 

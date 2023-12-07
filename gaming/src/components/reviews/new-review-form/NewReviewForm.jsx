@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import useForm from '../../../hooks/useForm';
 import newReviewValidator from '../../../validators/newReviewValidator';
 import styles from './newReviewForm.module.css';
 
