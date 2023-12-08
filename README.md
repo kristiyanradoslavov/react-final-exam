@@ -36,7 +36,7 @@
 </ul>
 
 ## Home:
-(website-images\Home.png)
+![Login Page](/website-images/Home.png)
 
 ## Catalogue:
 
