@@ -1620,7 +1620,7 @@
             "ff46021a-804a-4c73-aa7b-498a28568b81": {
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
                 title: "Call of Duty: Modern warfare ||",
-                category: "Shooting",
+                category: "Shooter",
                 imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/cod-mwii-screenshot-02-en-9jun22?$1600px$",
                 description: "Call of Duty: Modern Warfare II is the sequel to 2019’s blockbuster Modern Warfare. Featuring the return of the iconic, team leader Captain John Price, the fearless John \"Soap\" MacTavish, the seasoned Sergeant Kyle \"Gaz\” Garrick, and the lone wolf himself, fan favorite Simon “Ghost” Riley, witness what makes Task Force 141 (TF141) the legendary squad it is today.Leverage new weapons, vehicles, and cutting-edge equipment to take on enemies. Gear up and take the fight offshore to siege enemies underwater, breach a highly fortified enemy base, infil along the canals and liberate much-needed allies at a black site hidden within the mountains.Infinity Ward presents heart-pounding next-gen, state-of-the-art gameplay. Fight alongside friends in a truly immersive experience with stunningly realistic sound, lighting, and graphics that produce the most advanced Call of Duty in history.",
                 price: "58.99",

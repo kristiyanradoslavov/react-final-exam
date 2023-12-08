@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import useForm from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/authContext';
 
@@ -20,6 +20,8 @@ export default function RegisterModal({
     openLoginModal,
 }) {
 
+    const [serverError, setServerError] = useState([]);
+
 
     const closeButtonHandler = () => {
         closeRegisterModal()
@@ -33,7 +35,15 @@ export default function RegisterModal({
     const { registerSubmitHandler } = useContext(AuthContext);
 
 
-    const { values, errors, onChange, onSubmit } = useForm(registerSubmitHandler, registerValidator, {
+    const { values, errors, onChange, onSubmit } = useForm(
+        async () => {
+            const serverResult = await registerSubmitHandler(values);
+
+            if (serverResult) {
+                setServerError([serverResult]);
+            }
+        }
+        , registerValidator, {
         [FormKeys.FirstName]: '',
         [FormKeys.LastName]: '',
         [FormKeys.Email]: '',
@@ -130,6 +140,20 @@ export default function RegisterModal({
                                     {errors[FormKeys.Email]
                                         &&
                                         (errors[FormKeys.Email]).map((error, index) => {
+                                            return <li key={index} className={styles['error-wrapper']}>
+                                                <img src="/assets/images/error.png" alt="" className={styles['error-img']} />
+                                                <div className={styles['error-msg']}>
+                                                    {error}
+                                                </div>
+                                            </li>
+                                        })
+                                    }
+                                </ul>
+
+                                <ul>
+                                    {serverError
+                                        &&
+                                        serverError.map((error, index) => {
                                             return <li key={index} className={styles['error-wrapper']}>
                                                 <img src="/assets/images/error.png" alt="" className={styles['error-img']} />
                                                 <div className={styles['error-msg']}>

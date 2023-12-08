@@ -24,7 +24,7 @@ export const AuthProvider = ({
         try {
             const result = await authServices.register(values)
             if (result.code === 409) {
-                throw new Error('This user already exists')
+                throw new Error('This email already exists')
             }
 
             closeRegisterModal();
@@ -35,7 +35,7 @@ export const AuthProvider = ({
             navigate(Path.Home);
 
         } catch (error) {
-            console.log(error);
+            return error.message;
         }
     }
 

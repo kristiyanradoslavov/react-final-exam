@@ -1,3 +1,26 @@
 .game-item {
     height: 420px;
 }
+
+.explore-btn {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    padding: 0px 15px;
+    background-color: #ee626b;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    transition: all .3s;
+}
+
+.explore-btn:hover {
+    background-color: rgb(56, 107, 192);
+}

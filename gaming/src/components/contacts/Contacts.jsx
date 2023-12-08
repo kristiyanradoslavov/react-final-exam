@@ -1,3 +1,6 @@
+import Path from "../../paths";
+import { Link } from "react-router-dom";
+
 export default function Contacts() {
     return (
         <>
@@ -7,7 +10,7 @@ export default function Contacts() {
                         <div className="col-lg-12">
                             <h3>Contact Us</h3>
                             <span className="breadcrumb">
-                                <a href="#">Home</a> &gt; Contact Us
+                                <Link to={Path.Home}>Home</Link> &gt; Contact Us
                             </span>
                         </div>
                     </div>
@@ -55,80 +58,6 @@ export default function Contacts() {
                                                 allowFullScreen=""
                                             />
                                         </div>
-                                    </div>
-                                    <div className="col-lg-12">
-                                        <form id="contact-form" action="" method="post">
-                                            <div className="row">
-                                                <div className="col-lg-6">
-                                                    <fieldset>
-                                                        <input
-                                                            type="name"
-                                                            name="name"
-                                                            id="name"
-                                                            placeholder="Your Name..."
-                                                            autoComplete="on"
-                                                            required=""
-                                                        />
-                                                    </fieldset>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <fieldset>
-                                                        <input
-                                                            type="surname"
-                                                            name="surname"
-                                                            id="surname"
-                                                            placeholder="Your Surname..."
-                                                            autoComplete="on"
-                                                            required=""
-                                                        />
-                                                    </fieldset>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <fieldset>
-                                                        <input
-                                                            type="text"
-                                                            name="email"
-                                                            id="email"
-                                                            pattern="[^ @]*@[^ @]*"
-                                                            placeholder="Your E-mail..."
-                                                            required=""
-                                                        />
-                                                    </fieldset>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <fieldset>
-                                                        <input
-                                                            type="subject"
-                                                            name="subject"
-                                                            id="subject"
-                                                            placeholder="Subject..."
-                                                            autoComplete="on"
-                                                        />
-                                                    </fieldset>
-                                                </div>
-                                                <div className="col-lg-12">
-                                                    <fieldset>
-                                                        <textarea
-                                                            name="message"
-                                                            id="message"
-                                                            placeholder="Your Message"
-                                                            defaultValue={""}
-                                                        />
-                                                    </fieldset>
-                                                </div>
-                                                <div className="col-lg-12">
-                                                    <fieldset>
-                                                        <button
-                                                            type="submit"
-                                                            id="form-submit"
-                                                            className="orange-button"
-                                                        >
-                                                            Send Message Now
-                                                        </button>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>

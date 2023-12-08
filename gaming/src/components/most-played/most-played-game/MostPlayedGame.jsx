@@ -14,7 +14,7 @@ export default function MostPlayedGame({
                 <div className="down-content">
                     <span className="category">{gameData.category}</span>
                     <h4>{gameData.title}</h4>
-                    <a href="product-details.html">Explore</a>
+                    <div className={styles['explore-btn']}>Explore</div>
                 </div>
             </div>
         </Link>
