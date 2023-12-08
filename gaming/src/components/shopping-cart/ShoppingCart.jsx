@@ -18,7 +18,7 @@ export default function ShoppingCart() {
             .then((result) => {
                 setItems(result)
             })
-    }, [userId], [items])
+    }, [userId])
 
 
     const onItemDelete = (itemId) => {

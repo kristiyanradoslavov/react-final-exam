@@ -1742,6 +1742,8 @@
         },
         reviews: {
         },
+        cartItems: {
+        },
         ideas: {
             "833e0e57-71dc-42c0-b387-0ce0caf5225e": {
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
