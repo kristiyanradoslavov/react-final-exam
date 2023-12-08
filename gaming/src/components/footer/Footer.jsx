@@ -6,9 +6,6 @@ export default function Footer() {
                     <p>
                         Copyright © 2048 LUGX Gaming Company. All rights reserved.
                         &nbsp;&nbsp;{" "}
-                        <a rel="nofollow" href="https://templatemo.com" target="_blank">
-                            Design: TemplateMo
-                        </a>
                     </p>
                 </div>
             </div>
