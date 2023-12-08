@@ -1,7 +1,41 @@
-import styles from "./welcome.module.css"
+import { useState } from "react";
+import useForm from "../../hooks/useForm";
 
+import * as gameServices from "../../services/gamesServices"
+import searchGameValidator from "../../validators/searchGameValidator";
+import styles from "./welcome.module.css"
+import { useNavigate } from "react-router-dom";
+import Path from "../../paths";
+
+const SearchKey = {
+    SearchGame: 'search-game',
+}
 
 export default function Welcome() {
+
+    const [submitErrors, setSubmitErrors] = useState([]);
+    const navigate = useNavigate();
+
+    const submitHandler = (values) => {
+        gameServices.getSearchedGame(values[SearchKey.SearchGame])
+            .then((result) => {
+                if (!result.length) {
+                    throw new Error('No game found')
+                }
+                navigate(`${Path.ProductDetails}/${result[0]._id}`)
+            })
+            .catch((error) => {
+                setSubmitErrors(error.message)
+            })
+    }
+
+
+    const { values, errors, onChange, onSubmit } = useForm(
+        submitHandler,
+        searchGameValidator, {
+        [SearchKey.SearchGame]: '',
+    });
+
     return (
         <div className="main-banner">
             <div className="container">
@@ -15,15 +49,26 @@ export default function Welcome() {
                                 You can also browse what is already offered and buy at very good prices.
                             </p>
                             <div className="search-input">
-                                <form id="search" action="#">
+                                <form id="search">
                                     <input
                                         type="text"
                                         placeholder="Search Game"
                                         id="searchText"
-                                        name="searchKeyword"
+                                        name="search-game"
+                                        onChange={onChange}
+                                        values={values[SearchKey.SearchGame]}
                                     />
-                                    <button role="button">Search Now</button>
+                                    <button type="submit" onClick={onSubmit}>Search Now</button>
                                 </form>
+
+                                {(submitErrors.length != 0) &&
+                                    <div className={styles['error-wrapper']}>
+                                        <img src="/assets/images/error.png" alt="" className={styles['error-img']} />
+                                        <div className={styles['error-msg']}>
+                                            {submitErrors}
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

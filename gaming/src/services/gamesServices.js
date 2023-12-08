@@ -106,3 +106,23 @@ export const getGamesPerPage = async (skip, pageSize, filterBy) => {
     const result = await response.json();
     return result;
 }
+
+
+export const getSearchedGame = async (gameTitle) => {
+    const httpHeaders = {
+        method: "GET",
+        headers: {
+            'content-type': 'application/json',
+        }
+    }
+
+    const query = new URLSearchParams({
+        where: `title="${gameTitle}"`
+    });
+
+    const response = await fetch(`${baseUrl}?${query}`, httpHeaders);
+
+    const result = await response.json();
+
+    return result;
+}

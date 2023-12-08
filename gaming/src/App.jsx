@@ -32,8 +32,6 @@ function App() {
 
     return (
         <>
-            {/* Preloader */}
-
             <AuthProvider closeRegisterModal={closeRegisterModal} closeLoginModal={closeLoginModal}>
                 <Header createUserHandler={openRegisterModal} openLoginModal={openLoginModal} />
                 <Routes>

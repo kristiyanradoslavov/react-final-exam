@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useContext, useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom'
 
 import styles from './header.module.css'
 
@@ -12,11 +12,28 @@ export default function Header({
     openLoginModal
 }) {
 
-    const [activeTab, setActiveTab] = useState('Home');
+    const [activeTab, setActiveTab] = useState('');
+    const location = useLocation();
 
-    const tabClickHandler = (tabName) => {
-        setActiveTab(tabName);
-    }
+    useEffect(() => {
+        const path = location.pathname;
+    
+        if (path === Path.Home) {
+          setActiveTab('Home');
+        } else if (path === Path.Catalogue) {
+          setActiveTab('Catalogue');
+        } else if (path === Path.Contacts) {
+            setActiveTab('Contacts')
+        } else {
+            setActiveTab('')
+        }
+
+      }, [location.pathname]);
+
+
+    // const tabClickHandler = (tabName) => {
+    //     setActiveTab(tabName);
+    // }
 
     const registerBtnHandler = () => {
         createUserHandler();
@@ -48,7 +65,7 @@ export default function Header({
                                     <Link
                                         to={Path.Home}
                                         className={activeTab === 'Home' ? 'active' : ""}
-                                        onClick={() => tabClickHandler('Home')}
+                                        // onClick={() => tabClickHandler('Home')}
                                     >
                                         Home
                                     </Link>
@@ -57,7 +74,7 @@ export default function Header({
                                     <Link
                                         to={Path.Catalogue}
                                         className={activeTab === 'Catalogue' ? 'active' : ""}
-                                        onClick={() => tabClickHandler('Catalogue')}
+                                        // onClick={() => tabClickHandler('Catalogue')}
                                     >
                                         Catalogue
                                     </Link>
@@ -66,7 +83,7 @@ export default function Header({
                                     <Link
                                         to={Path.Contacts}
                                         className={activeTab === 'Contacts' ? 'active' : ""}
-                                        onClick={() => tabClickHandler('Contacts')}
+                                        // onClick={() => tabClickHandler('Contacts')}
                                     >
                                         Contact Us
                                     </Link>
