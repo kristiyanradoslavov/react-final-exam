@@ -35,22 +35,31 @@
  <li>MIT License</li>
 </ul>
 
+## <code style="color : red">Website Images</code>
 ## Home:
 ![Login Page](/website-images/Home.png)
 
 ## Catalogue:
+![Catalogue Page](/website-images/Catalogue.png)
 
 ## Register:
+![Register Page](/website-images/register.png)
 
 ## Login:
+![Login Page](/website-images/login.png)
 
 ## Game Details: 
+![Game Details Page](/website-images/game-details.png)
 
 ## Create Game:
+![Create Game Page](/website-images/add-game.png)
 
 ## Edit Game:
+![Edit Game Page](/website-images/edit-game.png)
 
 ## Delete Game:
+![Delete Game Page](/website-images/delete-game.png)
 
 ## Shopping Cart:
+![Shopping Cart Page](/website-images/Shopping-cart.png)
 
