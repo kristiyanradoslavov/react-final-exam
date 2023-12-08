@@ -1,0 +1,16 @@
+.games-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+
+.single-game > a {
+    width: 200px;
+    display: block;
+}
+
+.single-game img {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+}

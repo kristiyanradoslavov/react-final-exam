@@ -1,4 +1,17 @@
+import { useEffect, useState } from "react";
+import MostPlayedGame from "./most-played-game/MostPlayedGame";
+import * as selectedGamesServices from "../../services/selectedGamesServices";
+import styles from "./mostPlayed.module.css";
+
 export default function MostPlayed() {
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        selectedGamesServices.getMostBoughtGames()
+            .then((result) => {
+                setGames(result);
+            });
+    }, [])
     return (
         <div className="section most-played">
             <div className="container">
@@ -14,90 +27,18 @@ export default function MostPlayed() {
                             <a href="shop.html">View All</a>
                         </div> */}
                     </div>
-                    <div className="col-lg-2 col-md-6 col-sm-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/top-game-01.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Adventure</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">Explore</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-2 col-md-6 col-sm-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/top-game-02.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Adventure</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">Explore</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-2 col-md-6 col-sm-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/top-game-03.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Adventure</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">Explore</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-2 col-md-6 col-sm-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/top-game-04.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Adventure</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">Explore</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-2 col-md-6 col-sm-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/top-game-05.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Adventure</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">Explore</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-2 col-md-6 col-sm-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/top-game-06.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Adventure</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">Explore</a>
-                            </div>
-                        </div>
-                    </div>
+
+                    <ul className={styles['games-wrapper']}>
+                        {games.map((game) =>
+                            <li 
+                            key={game._id}
+                            className={styles['single-game']}
+                            >
+                                {<MostPlayedGame gameData={{...game}}/>}
+                            </li>
+                        )}
+                    </ul>
+
                 </div>
             </div>
         </div>

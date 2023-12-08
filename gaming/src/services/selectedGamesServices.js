@@ -1,5 +1,5 @@
 const trendingGamesBaseUrl = 'http://localhost:3030/data/trendingGames'
-const mostBoughtGamesBaseUrl = 'http://localhost:3030/data/mostBought'
+const mostBoughtGamesBaseUrl = 'http://localhost:3030/data/mostPlayed'
 
 
 

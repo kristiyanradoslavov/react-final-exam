@@ -1794,7 +1794,7 @@
                 _id: "ff46021a-804a-4c73-aa7b-498a28568b81"
             },
         },
-        mostBought: {
+        mostPlayed: {
             "ad50ad86-b1b4-40c0-ae22-dcfaa9abb453": {
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
                 title: "God of War Ragnarök",
@@ -1842,6 +1842,30 @@
                 ownerEmail: "george@abv.bg",
                 _createdOn: 1614935181470,
                 _id: "b1cfcc47-447b-44f2-bab8-c825e1979c25"
+            },
+            "9acbff39-f141-440c-9896-7625f27d189c": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Hogwarts Legacy",
+                category: "Adventure",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-05-ps5-en-02oct20?$1600px$",
+                description: "Hogwarts Legacy is an immersive, open-world action RPG set in the world first introduced in the Harry Potter books.Embark on a journey through familiar and new locations as you explore and discover magical beasts, customize your character and craft potions, master spell casting, upgrade talents and become the wizard you want to be.Experience Hogwarts in the 1800s. Your character is a student who holds the key to an ancient secret that threatens to tear the wizarding world apart. Discover the feeling of living at Hogwarts as you make allies, battle Dark Wizards and ultimately decide the fate of the wizarding world.",
+                price: "60.99",
+                ownerName: "George",
+                ownerEmail: "george@abv.bg",
+                _createdOn: 1614935181470,
+                _id: "9acbff39-f141-440c-9896-7625f27d189c"
+            },
+            "892610f4-5aff-4b95-9037-557c38798cb2": {
+                _ownerId: "bc8ae004-af4d-4dc9-ba62-ede6463ca35f",
+                title: "Fortnite",
+                category: "Shooter",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/fortnite-store-artwork-01-en-20oct22?$800px--t$",
+                description: "Create, play and battle with friends for free in Fortnite.Be the last player standing in Battle Royale and Zero Build, experience a concert or live event, or discover over a million creator made games, including racing, parkour, zombie survival and more.",
+                price: "5.99",
+                ownerName: "Kristiyan",
+                ownerEmail: "radoslavov48@gmail.com",
+                _createdOn: 1614935268135,
+                _id: "892610f4-5aff-4b95-9037-557c38798cb2"
             },
         },
         ideas: {

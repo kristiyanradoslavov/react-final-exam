@@ -16,7 +16,7 @@
 }
 
 
-@media (max-width: 1500px) {
+@media (max-width: 1300px) {
     .games-wrapper {
         flex-wrap: wrap;
     }
