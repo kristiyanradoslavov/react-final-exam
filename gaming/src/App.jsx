@@ -17,6 +17,7 @@ import AuthGuard from "./components/guards/AuthGuard";
 import useModalState from "./hooks/useModalState";
 import ShoppingCart from "./components/shopping-cart/ShoppingCart";
 import PageNotFound from "./components/404/PageNotFound";
+import OrderComplete from "./components/order-complete/OrderComplete";
 
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
 
                     </Route>
 
-
+                    <Route path={Path.OrderComplete} element={<OrderComplete />} />
                     <Route path="*" element={<PageNotFound />} />
 
                 </Routes>

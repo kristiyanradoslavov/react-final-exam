@@ -6,6 +6,7 @@ import * as shoppingCartServices from '../../../services/shoppingCartServices'
 export default function ShoppingCartItem({
     itemDetails,
     onItemDelete,
+    updateFinalPrice,
 }) {
 
     const deleteBtnHandler = async (e) => {

@@ -6,6 +6,7 @@ const Path = {
     AddNewGame: '/add-new-game',
     EditGame: '/edit-game',
     ShoppingCart: '/shopping-cart',
+    OrderComplete: '/order-complete',
 }
 
 export default Path
