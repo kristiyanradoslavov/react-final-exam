@@ -1,0 +1,9 @@
+.error-wrapper {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.error-wrapper img {
+    width: 80%;
+}

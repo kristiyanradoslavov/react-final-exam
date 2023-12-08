@@ -16,6 +16,7 @@ import EditGameForm from "./components/edit-game-form/EditGameForm";
 import AuthGuard from "./components/guards/AuthGuard";
 import useModalState from "./hooks/useModalState";
 import ShoppingCart from "./components/shopping-cart/ShoppingCart";
+import PageNotFound from "./components/404/PageNotFound";
 
 
 function App() {
@@ -50,7 +51,11 @@ function App() {
 
                     </Route>
 
+
+                    <Route path="*" element={<PageNotFound />} />
+
                 </Routes>
+
 
                 {registerModalState && <RegisterModal closeRegisterModal={closeRegisterModal} openLoginModal={openLoginModal} />}
                 {loginModalState && <LoginModal closeLoginModal={closeLoginModal} openRegisterModal={openRegisterModal} />}
