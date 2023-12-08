@@ -18,7 +18,7 @@
   <br>
  <li>Install project dependencies:</li>
   <ul>
-  <li>cd /client</li>
+  <li>cd /gaming</li>
   <li>npm install</li>
  </ul>
  </li>
