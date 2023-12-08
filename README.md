@@ -51,6 +51,9 @@
 ## Game Details: 
 ![Game Details Page](/website-images/game-details.png)
 
+## Game Reviews:
+![Game Reviews Page](/website-images/game-reviews.png)
+
 ## Create Game:
 ![Create Game Page](/website-images/add-game.png)
 
@@ -63,3 +66,8 @@
 ## Shopping Cart:
 ![Shopping Cart Page](/website-images/Shopping-cart.png)
 
+## Contacts:
+![Contacts Page](/website-images/Contacts.png)
+
+## Page Not Found:
+![Not Found Page](/website-images/page-not-found.png)
