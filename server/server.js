@@ -1744,6 +1744,106 @@
         },
         cartItems: {
         },
+        trendingGames: {
+            "1240549d-f0e0-497e-ab99-eb8f703713d7": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Spider Man Miles Morales",
+                category: "Adventure",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-games-spiderman-miles-morales-image-block-en-26aug22?$800px--t$",
+                description: "In the latest adventure in the Marvel’s Spider-Man universe, teenager Miles Morales is adjusting to his new home while following in the footsteps of his mentor, Peter Parker, as a new Spider-Man.But when a fierce power struggle threatens to destroy his new home, the aspiring hero realizes that with great power, there must also come great responsibility. To save all of Marvel’s New York, Miles must take up the mantle of Spider-Man and own it.",
+                price: "49.99",
+                ownerName: "Peter",
+                ownerEmail: "peter@abv.bg",
+                _createdOn: 1614935055353,
+                _id: "1240549d-f0e0-497e-ab99-eb8f703713d7"
+            },
+            "143e5265-333e-4150-80e4-16b61de31aa0": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "The Last of Us Part II",
+                category: "Horror",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/ps4-games-TLOU-Part-II-image-block-01-en-08nov22?$800px--t$",
+                description: "Five years after their dangerous journey across the post-pandemic United States, Ellie and Joel have settled down in Jackson, Wyoming. Living amongst a thriving community of survivors has allowed them peace and stability, despite the constant threat of the infected and other, more desperate survivors.When a violent event disrupts that peace, Ellie embarks on a relentless journey to carry out justice and find closure. As she hunts those responsible one by one, she is confronted with the devastating physical and emotional repercussions of her actions.",
+                price: "49.99",
+                ownerName: "George",
+                ownerEmail: "george@abv.bg",
+                _createdOn: 1614935181470,
+                _id: "143e5265-333e-4150-80e4-16b61de31aa0"
+            },
+            "ad50ad86-b1b4-40c0-ae22-dcfaa9abb453": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "God of War Ragnarök",
+                category: "Adventure",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-games-god-of-war-image-block-01-en-28jul21?$800px--t$",
+                description: "From Santa Monica Studio comes the sequel to the critically acclaimed God of War (2018). Fimbulwinter is well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for a prophesied battle that will end the world. Along the way they will explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters. The threat of Ragnarök grows ever closer. Kratos and Atreus must choose between their own safety and the safety of the realms.",
+                price: "60.99",
+                ownerName: "George",
+                ownerEmail: "george@abv.bg",
+                _createdOn: 1614935181470,
+                _id: "ad50ad86-b1b4-40c0-ae22-dcfaa9abb453"
+            },
+            "ff46021a-804a-4c73-aa7b-498a28568b81": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Call of Duty: Modern warfare ||",
+                category: "Shooting",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/cod-mwii-screenshot-02-en-9jun22?$1600px$",
+                description: "Call of Duty: Modern Warfare II is the sequel to 2019’s blockbuster Modern Warfare. Featuring the return of the iconic, team leader Captain John Price, the fearless John \"Soap\" MacTavish, the seasoned Sergeant Kyle \"Gaz\” Garrick, and the lone wolf himself, fan favorite Simon “Ghost” Riley, witness what makes Task Force 141 (TF141) the legendary squad it is today.Leverage new weapons, vehicles, and cutting-edge equipment to take on enemies. Gear up and take the fight offshore to siege enemies underwater, breach a highly fortified enemy base, infil along the canals and liberate much-needed allies at a black site hidden within the mountains.Infinity Ward presents heart-pounding next-gen, state-of-the-art gameplay. Fight alongside friends in a truly immersive experience with stunningly realistic sound, lighting, and graphics that produce the most advanced Call of Duty in history.",
+                price: "58.99",
+                ownerName: "George",
+                ownerEmail: "george@abv.bg",
+                _createdOn: 1614935181470,
+                _id: "ff46021a-804a-4c73-aa7b-498a28568b81"
+            },
+        },
+        mostBought: {
+            "ad50ad86-b1b4-40c0-ae22-dcfaa9abb453": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "God of War Ragnarök",
+                category: "Adventure",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-games-god-of-war-image-block-01-en-28jul21?$800px--t$",
+                description: "From Santa Monica Studio comes the sequel to the critically acclaimed God of War (2018). Fimbulwinter is well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for a prophesied battle that will end the world. Along the way they will explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters. The threat of Ragnarök grows ever closer. Kratos and Atreus must choose between their own safety and the safety of the realms.",
+                price: "60.99",
+                ownerName: "George",
+                ownerEmail: "george@abv.bg",
+                _createdOn: 1614935181470,
+                _id: "ad50ad86-b1b4-40c0-ae22-dcfaa9abb453"
+            },
+            "05afb8e5-b9bb-42b2-aa26-5553b0d9cf96": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Minecraft",
+                category: "Adventure",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/minecraft-squareboxart-01-ps4-05dec19-en?$800px--t$",
+                description: "In Minecraft, your adventure starts with your imagination. Build anything you can imagine with unlimited resources in Creative mode, or go on grand expeditions in Survival, journeying across mysterious lands and into the depths of your own infinite worlds.Will you hide from monsters or craft tools, armor and weapons to fight back? No need to go alone!",
+                price: "39.99",
+                ownerName: "Peter",
+                ownerEmail: "peter@abv.bg",
+                _createdOn: 1614935055353,
+                _id: "05afb8e5-b9bb-42b2-aa26-5553b0d9cf96"
+            },
+            "9ecf22e0-8ca6-40a7-b17e-1abe02600269": {
+                _ownerId: "bc8ae004-af4d-4dc9-ba62-ede6463ca35f",
+                title: "Apex Legends",
+                category: "Shooter",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/apex-legends-store-artwork-01-en-24aug22?$800px--t$",
+                description: "Jump into a hero shooter beyond battle-royale experience from Respawn Entertainment, the veteran studio behind the Titanfall series.Apex Legends is a free-to-play, hero shooter with an ever expanding suite of finely-tuned legendary characters and powerful abilities filled with hundreds of cosmetic unlocks to hunt down.Team up to battle for fame and fortune on the fringes of the Frontier - an all new region of the Titanfall universe - and master a roster of diverse characters, deep, tactical squad play, and a host of fresh innovations that seek to revolutionize the battle royale genre, from 60-person battle royale matches to limited-time modes and takeovers.",
+                price: "5.99",
+                ownerName: "Kristiyan",
+                ownerEmail: "radoslavov48@gmail.com",
+                _createdOn: 1614935268135,
+                _id: "9ecf22e0-8ca6-40a7-b17e-1abe02600269"
+            },
+            "b1cfcc47-447b-44f2-bab8-c825e1979c25": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Grand Theft Auto V",
+                category: "Adventure",
+                imageUrl: "https://gmedia.playstation.com/is/image/SIEPDC/gtav-store-art-01-en-15mar22?$800px--t$",
+                description: "Experience blockbuster hits Grand Theft Auto V and GTA Online - now upgraded for PlayStation 5 with stunning visuals, faster loading, adaptive triggers, haptic feedback, Tempest 3D audio and more, plus exclusive content for GTA Online players.",
+                price: "34.99",
+                ownerName: "George",
+                ownerEmail: "george@abv.bg",
+                _createdOn: 1614935181470,
+                _id: "b1cfcc47-447b-44f2-bab8-c825e1979c25"
+            },
+        },
         ideas: {
             "833e0e57-71dc-42c0-b387-0ce0caf5225e": {
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",

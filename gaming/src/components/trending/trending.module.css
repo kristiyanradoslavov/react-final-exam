@@ -1,0 +1,23 @@
+.games-wrapper {
+    display: flex;
+    gap: 40px;
+    /* flex-wrap: wrap; */
+}
+
+.single-game > a {
+    width: 100%;
+    display: block;
+}
+
+.single-game img {
+    height: 280px;
+    width: 320px;
+    object-fit: cover;
+}
+
+
+@media (max-width: 1500px) {
+    .games-wrapper {
+        flex-wrap: wrap;
+    }
+}

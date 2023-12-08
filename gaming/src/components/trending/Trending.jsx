@@ -1,4 +1,18 @@
+import { useEffect, useState } from "react";
+import * as selectedGamesServices from '../../services/selectedGamesServices'
+import TrendingGame from "./trending-game/TrendingGame";
+
+import styles from './trending.module.css'
+
 export default function Trending() {
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        selectedGamesServices.getTrendingGames()
+            .then((result) => {
+                setGames(result)
+            })
+    }, [])
     return (
         <div className="section trending">
             <div className="container">
@@ -9,83 +23,16 @@ export default function Trending() {
                             <h2>Trending Games</h2>
                         </div>
                     </div>
-                    <div className="col-lg-6">
-                        {/* <div className="main-button">
-                            <a href="shop.html">View All</a>
-                        </div> */}
-                    </div>
-                    <div className="col-lg-3 col-md-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/trending-01.jpg" alt="" />
-                                </a>
-                                <span className="price">
-                                    <em>$28</em>$20
-                                </span>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Action</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">
-                                    <i className="fa fa-shopping-bag" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/trending-02.jpg" alt="" />
-                                </a>
-                                <span className="price">$44</span>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Action</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">
-                                    <i className="fa fa-shopping-bag" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/trending-03.jpg" alt="" />
-                                </a>
-                                <span className="price">
-                                    <em>$64</em>$44
-                                </span>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Action</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">
-                                    <i className="fa fa-shopping-bag" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6">
-                        <div className="item">
-                            <div className="thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/images/trending-04.jpg" alt="" />
-                                </a>
-                                <span className="price">$32</span>
-                            </div>
-                            <div className="down-content">
-                                <span className="category">Action</span>
-                                <h4>Assasin Creed</h4>
-                                <a href="product-details.html">
-                                    <i className="fa fa-shopping-bag" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <ul className={styles['games-wrapper']}>
+                        {games.map((game) =>
+                            <li
+                                key={game._id}
+                                className={styles['single-game']}
+                            >
+                                <TrendingGame gameData={{...game}} />
+                            </li>
+                        )}
+                    </ul>
                 </div>
             </div>
         </div>
